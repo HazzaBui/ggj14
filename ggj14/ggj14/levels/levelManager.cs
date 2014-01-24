@@ -5,13 +5,17 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
+
 namespace ggj14
 {
     public class levelManager : Microsoft.Xna.Framework.Game
     {
+
+        GraphicsDeviceManager graphics;
+
         public levelManager()
         {
-
+            graphics = new GraphicsDeviceManager(this);
         }
 
         protected override void Initialize()
@@ -36,6 +40,8 @@ namespace ggj14
 
         protected override void Draw(GameTime gameTime)
         {
+            graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
+
             base.Draw(gameTime);
         }
 
