@@ -1,0 +1,6 @@
+C:\Users\Harry\Documents\GGJ14\ggj14\ggj14\ggj14\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Harry\Documents\GGJ14\ggj14\ggj14\ggj14\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Harry\Documents\GGJ14\ggj14\ggj14\ggj14\bin\x86\Debug\ggj14.exe
+C:\Users\Harry\Documents\GGJ14\ggj14\ggj14\ggj14\bin\x86\Debug\ggj14.pdb
+C:\Users\Harry\Documents\GGJ14\ggj14\ggj14\ggj14\obj\x86\Debug\ggj14.exe
+C:\Users\Harry\Documents\GGJ14\ggj14\ggj14\ggj14\obj\x86\Debug\ggj14.pdb

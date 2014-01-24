@@ -10,7 +10,7 @@ namespace ggj14
         /// </summary>
         static void Main(string[] args)
         {
-            using (Game1 game = new Game1())
+            using (levelManager game = new levelManager())
             {
                 game.Run();
                 int i = 0;
