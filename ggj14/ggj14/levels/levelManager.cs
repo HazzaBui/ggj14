@@ -172,6 +172,7 @@ namespace ggj14
             {
                 levelStack.Push(new ggj14.levels.gameLevel(spriteBatch, contentManager));
                 levelStack.Peek().intialise("Content\\xmlContent\\level1.xml", "chapter1");
+                levelStack.Peek().loadContent();
                 //levelStack.Push(new ggj14.levels.mainMenu(spriteBatch, contentManager));
             }
 

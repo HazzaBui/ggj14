@@ -13,12 +13,18 @@ namespace ggj14.helpers
             switch (objectType)
             {
                 case "boy":
-                    return new entities.Entities.boy(new Microsoft.Xna.Framework.Vector2(posx, posy));
+                    return new entities.Entities.boy(new Microsoft.Xna.Framework.Vector2(posx, posy), texture);
                 
 
             }
 
             return null;
+        }
+
+        public static entities.gameObject loadGameObject(string texture, int posx, int posy)
+        {
+
+            return new entities.gameObject(texture, new Microsoft.Xna.Framework.Vector2(posx, posy));
         }
 
     }
