@@ -25,8 +25,11 @@ namespace ggj14
         ggj14.helpers.playerKeys player1Keys, player2Keys;
         XmlTextReader reader;
         bool levelFadeOut;
+        bool levelFadeIn;
         bool loadNextLevel;
+        bool levelActive;
         float fadeOutValue;
+        float fadeInValue;
         bool popLevelNextUpdate;
         RenderTarget2D renderTarget;
         Texture2D fadeOutTexture;
@@ -91,6 +94,7 @@ namespace ggj14
 
             }
 
+            levelActive = true;
             levelFadeOut = false;
             fadeOutValue = 1.0f;
             popLevelNextUpdate = false;
@@ -127,6 +131,18 @@ namespace ggj14
                 levelStack.Pop();
             }
 
+            if (levelFadeIn)
+            {
+                fadeInValue += 0.01f;
+            }
+            if (fadeInValue > 1.0f)
+            {
+                fadeInValue = 1.0f;
+                levelActive = true;
+                levelFadeIn = false;
+                loadNextLevel = false;
+            }
+
             if (levelFadeOut)
             {
                 fadeOutValue -= 0.01f;
@@ -134,8 +150,8 @@ namespace ggj14
             if (fadeOutValue < 0)
             {
                 levelFadeOut = false;
+                levelFadeIn = true;
                 fadeOutValue = 1.0f;
-                loadNextLevel = true;
 
                 if (levelStack.Count <= 0)
                 {
@@ -170,14 +186,15 @@ namespace ggj14
 
             if (levelStack.Count == 0 && loadNextLevel)
             {
-                levelStack.Push(new ggj14.levels.gameLevel(spriteBatch, contentManager));
-                levelStack.Peek().intialise("Content\\xmlContent\\level1.xml", "chapter1");
-                levelStack.Peek().loadContent();
-                //levelStack.Push(new ggj14.levels.mainMenu(spriteBatch, contentManager));
+                //levelStack.Push(new ggj14.levels.gameLevel(spriteBatch, contentManager));
+                //levelStack.Peek().intialise("Content\\xmlContent\\level1.xml", "chapter1");
+                //levelStack.Peek().loadContent();
+                levelStack.Push(new ggj14.levels.mainMenu(spriteBatch, contentManager));
+                //levelActive = false;
             }
 
-            if(levelStack.Count > 0)
-                levelState = levelStack.Peek().update(gameTime, player1); 
+            if(levelStack.Count > 0 && levelActive)
+                levelState = levelStack.Peek().update(gameTime, player1);
 
             if (levelState.exitLevel)
             {
@@ -188,6 +205,14 @@ namespace ggj14
                     loadNextLevel = false;
                 }
             }
+            else if (levelState.nextLevel != "" && levelState.nextLevel != null)
+            {
+                levelStack.Push(new levels.gameLevel(spriteBatch, contentManager));
+                levelStack.Peek().intialise("Content\\xmlContent\\" + levelState.nextLevel + ".xml", levelState.nextChapter);
+                levelStack.Peek().loadContent();
+                levelActive = false;
+                levelFadeOut = true;
+            }
 
 
             base.Update(gameTime);
@@ -195,7 +220,7 @@ namespace ggj14
 
         protected override void Draw(GameTime gameTime)
         {
-            if (!levelFadeOut)
+            if (levelActive || levelFadeIn)
             {
                 device.SetRenderTarget(renderTarget);
                 spriteBatch.Begin();
@@ -206,11 +231,11 @@ namespace ggj14
                 device.SetRenderTarget(null);
                 fadeOutTexture = (Texture2D)renderTarget;
             }
-            
-            
+
+            float fadeValue = levelFadeIn ? fadeInValue : fadeOutValue;
             //Draw texture to screen
             spriteBatch.Begin();
-            spriteBatch.Draw(fadeOutTexture, new Vector2(0, 0), null, new Color(fadeOutValue, fadeOutValue, fadeOutValue) , 0, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1);
+            spriteBatch.Draw(fadeOutTexture, new Vector2(0, 0), null, new Color(fadeValue, fadeValue, fadeValue) , 0, new Vector2(0, 0), 1.0f, SpriteEffects.None, 1);
             spriteBatch.End();
         }
 

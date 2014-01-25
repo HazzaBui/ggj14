@@ -61,6 +61,14 @@ namespace ggj14.levels
 
         public override helpers.levelReturn update(Microsoft.Xna.Framework.GameTime gameTime, helpers.playerControl controller)
         {
+            for (int i = 0; i < gameObjects.Count; i++)
+            {
+                gameObjects.ElementAt(i).Update();
+            }
+            for (int i = 0; i < entities.Count; i++)
+            {
+                entities.ElementAt(i).Update(entities.ToArray(), gameObjects.ToArray(), i, controller);
+            }
 
             return returnObj;
         }

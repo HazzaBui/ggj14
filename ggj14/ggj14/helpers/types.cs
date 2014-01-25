@@ -15,6 +15,7 @@ namespace ggj14.helpers
     struct levelReturn
     {
         public string nextLevel;
+        public string nextChapter;
         public characters character;
         public int previousLevel;
         public bool exitLevel;

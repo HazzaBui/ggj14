@@ -130,7 +130,12 @@ namespace ggj14.levels
                     {
                         returnObj.exitLevel = true;
                     }
-                    //Add new level to stack
+                    else
+                    {
+                        returnObj.nextLevel = "level" + (menuSelection + 1);
+                        returnObj.nextChapter = "chapter1";
+                        //Add new level to stack
+                    }
 
                 }
             }
