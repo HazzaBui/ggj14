@@ -84,7 +84,7 @@ namespace ggj14.entities
             texture = inTex;
             position = inPos;
             isActivePlayer = false;
-            currentlyColliding = false
+            currentlyColliding = false;
             centre = new Vector2((position.X + texture.Width) / 2, (position.Y + texture.Height) / 2);
         }
 
