@@ -41,5 +41,14 @@ namespace ggj14.entities
             texture = inTex;
             this.centre = new Vector2((inPos.X + texture.Width) / 2, (inPos.Y + texture.Height) / 2);
         }
+        public virtual void Update()
+        {
+            this.centre = new Vector2((position.X + texture.Width) / 2, (position.Y + texture.Height) / 2);
+        }
+
+        public virtual void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(texture, centre, null, Color.White);
+        }
     }
 }
