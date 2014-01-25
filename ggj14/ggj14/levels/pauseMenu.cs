@@ -5,59 +5,58 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 
 namespace ggj14.levels
 {
-    class mainMenu : baseLevel
+    class pauseMenu : baseLevel
     {
         SpriteBatch sb;
         ContentManager cm;
         ggj14.helpers.levelReturn returnObj;
-        String[] menuStrings;
-        float[] menuSize;
-        int menuSelection;
-        Vector2 menuTopLeftPos;
-        SpriteFont menuFont;
+        SpriteFont sf;
         int menuTimer;
+        int menuSelection;
         bool isGrowing;
-        int enterTimer;
+        string []menuStrings;
+        float[] menuSize;
+        Vector2 menuTopLeftPos;
+        int escapeTimer;
 
-        public mainMenu(SpriteBatch spriteBatch, ContentManager contentManager)
+
+        public pauseMenu(SpriteBatch spriteBatch, ContentManager contentManager)
         {
             sb = spriteBatch;
             cm = contentManager;
-            returnObj = new ggj14.helpers.levelReturn();
-            returnObj.exitLevel = false;
-            menuStrings = new String[3];
-            menuSize = new float[menuStrings.Length];
 
-            loadContent();
+            menuStrings = new string[2];
+            menuSize = new float[menuStrings.Length];
+            returnObj = new ggj14.helpers.levelReturn();
             menuTopLeftPos = new Vector2();
 
-            this.intialise("", "");
+            this.intialise(null, null);
+            this.loadContent();
         }
 
         public override void intialise(string levelXml, string chapter)
         {
-            menuStrings[0] = "Level 1";
-            menuStrings[1] = "Level 2";
-            menuStrings[2] = "Exit";
+            menuStrings[0] = "Resume";
+            menuStrings[1] = "Quit";
             for (int i = 0; i < menuSize.Length; i++)
                 menuSize[i] = 0.0f;
             //menuSize = 1.2f;
             menuSelection = 0;
-            menuTopLeftPos.X = 20.0f;
-            menuTopLeftPos.Y = 20.0f;
+            menuTopLeftPos.X = 300.0f; 
+            menuTopLeftPos.Y = 200.0f;
             menuTimer = 0;
             isGrowing = true;
-
-            enterTimer = 0;
+            escapeTimer = 0;
         }
 
         public override void loadContent()
         {
-            menuFont = cm.Load<SpriteFont>("Content\\fonts\\mainMenu");
+            sf = cm.Load<SpriteFont>("Content\\fonts\\mainMenu");
         }
 
         public override void unloadContent()
@@ -65,14 +64,13 @@ namespace ggj14.levels
             
         }
 
-        public override ggj14.helpers.levelReturn update(Microsoft.Xna.Framework.GameTime gameTime, ggj14.helpers.playerControl controller)
+        public override helpers.levelReturn update(Microsoft.Xna.Framework.GameTime gameTime, helpers.playerControl controller)
         {
-            returnObj.nextLevel = "";
-            menuTimer += gameTime.ElapsedGameTime.Milliseconds;
-            enterTimer += gameTime.ElapsedGameTime.Milliseconds;
-            if (enterTimer > 1000)
-                enterTimer = 1000;
+            escapeTimer += gameTime.ElapsedGameTime.Milliseconds;
+            if (escapeTimer > 1000)
+                escapeTimer = 1000;
 
+            menuTimer += gameTime.ElapsedGameTime.Milliseconds;
             if (menuTimer > 250)
             {
                 menuTimer = 1001;
@@ -98,7 +96,7 @@ namespace ggj14.levels
                     menuSize[menuSelection] = 1.2f;
                     isGrowing = true;
                 }
-                
+
             }
 
             for (int i = 0; i < menuSize.Length; i++)
@@ -124,53 +122,49 @@ namespace ggj14.levels
                     isGrowing = true;
             }
 
+            KeyboardState keyboardState = Keyboard.GetState();
+            Keys[] pressedKeys = keyboardState.GetPressedKeys();
 
-
-            //Logic to load levels
-            KeyboardState kb = Keyboard.GetState();
-            Keys[] pressedKeys = kb.GetPressedKeys();
-
-            foreach (Keys key in pressedKeys)
+            foreach ( Keys k in pressedKeys)
             {
-                if (key == Keys.Enter && enterTimer > 250)
+                if (k == Keys.Escape && escapeTimer > 250)
                 {
-                    enterTimer = 0;
+                    returnObj.nextLevel = "";
+                    returnObj.exitLevel = true;
+                }
+                if (k == Keys.Enter)
+                {
                     if (menuSelection == menuStrings.Length - 1)
                     {
+                        returnObj.nextLevel = "menu";
                         returnObj.exitLevel = true;
                     }
                     else
                     {
-                        returnObj.nextLevel = "level" + (menuSelection + 1);
-                        returnObj.nextChapter = "chapter1";
-                        //Add new level to stack
+                        returnObj.nextLevel = "";
+                        returnObj.exitLevel = true;
                     }
-
                 }
             }
-            
+
 
             return returnObj;
         }
 
         public override void draw(Microsoft.Xna.Framework.GraphicsDeviceManager graphics, Microsoft.Xna.Framework.GameTime gameTime)
         {
-            graphics.GraphicsDevice.Clear(Color.Green);
-            
-            for(int i = 0; i < menuStrings.Length; i++)
+            for (int i = 0; i < menuStrings.Length; i++)
             {
-                if(i == menuSelection)
-                    //sb.DrawString(menuFont, menuStrings[i], new Vector2(menuTopLeftPos.X, menuTopLeftPos.Y + i * 40), Color.Yellow);
-                    sb.DrawString(menuFont, menuStrings[i], new Vector2(menuTopLeftPos.X, menuTopLeftPos.Y + i * 40), Color.Purple, 0.0f, new Vector2(0.0f, 0.0f), menuSize[i], SpriteEffects.None, 0.0f);
-                    
+                if (i == menuSelection)
+                {
+                    sb.DrawString(sf, menuStrings[i], new Vector2(menuTopLeftPos.X, menuTopLeftPos.Y + 20 * i), Color.Yellow);
+                }
                 else
-                    sb.DrawString(menuFont, menuStrings[i], new Vector2(menuTopLeftPos.X, menuTopLeftPos.Y + i * 40), Color.White, 0.0f, new Vector2(0.0f, 0.0f), menuSize[i], SpriteEffects.None, 0.0f);
-                    //sb.DrawString(menuFont, menuStrings[i], new Vector2(menuTopLeftPos.X, menuTopLeftPos.Y + i * 40), Color.White);
+                {
+                    sb.DrawString(sf, menuStrings[i], new Vector2(menuTopLeftPos.X, menuTopLeftPos.Y + 20 * i), Color.White);
+                }
             }
-
-
-
-
         }
+
     }
 }

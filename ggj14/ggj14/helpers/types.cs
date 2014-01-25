@@ -17,7 +17,7 @@ namespace ggj14.helpers
         public string nextLevel;
         public string nextChapter;
         public characters character;
-        public int previousLevel;
+        public string previousLevel;
         public bool exitLevel;
     }
 

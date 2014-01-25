@@ -29,6 +29,7 @@ namespace ggj14.levels
             gameObjects = new List<entities.gameObject>();
             backgroundTextures = new List<Texture2D>();
             backgroundTextureStrings = new List<string>();
+            returnObj = new helpers.levelReturn();
 
         }
 

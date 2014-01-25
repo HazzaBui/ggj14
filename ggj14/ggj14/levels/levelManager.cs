@@ -33,6 +33,7 @@ namespace ggj14
         bool popLevelNextUpdate;
         RenderTarget2D renderTarget;
         Texture2D fadeOutTexture;
+        int escapeTimer;
 
         public levelManager()
         {
@@ -100,6 +101,7 @@ namespace ggj14
             popLevelNextUpdate = false;
             loadNextLevel = true;
 
+            escapeTimer = 0;
             //levelStack.Push(new ggj14.levels.mainMenu(spriteBatch, contentManager));
 
             base.Initialize();
@@ -125,6 +127,10 @@ namespace ggj14
 
         protected override void Update(GameTime gameTime)
         {
+            escapeTimer += gameTime.ElapsedGameTime.Milliseconds;
+            if (escapeTimer > 1000)
+                escapeTimer = 1000;
+
             if (popLevelNextUpdate)
             {
                 popLevelNextUpdate = false;
@@ -137,7 +143,7 @@ namespace ggj14
             }
             if (fadeInValue > 1.0f)
             {
-                fadeInValue = 1.0f;
+                fadeInValue = 0.0f;
                 levelActive = true;
                 levelFadeIn = false;
                 loadNextLevel = false;
@@ -179,6 +185,20 @@ namespace ggj14
                     player1.right = true;
                 if (key == player1Keys.use)
                     player1.use = true;
+
+                //Check for escapped pressed for quit/menu pop
+                if (key == Keys.Escape && escapeTimer > 250)
+                {
+                    escapeTimer = 0;
+                    if (levelStack.Count == 1)
+                    {
+                        Exit();
+                    }
+                    else
+                    {
+                        levelStack.Push(new levels.pauseMenu(spriteBatch, contentManager));
+                    }
+                }
             }
 
 
@@ -198,11 +218,23 @@ namespace ggj14
 
             if (levelState.exitLevel)
             {
+                escapeTimer = 0;
                 if (levelStack.Count == 1)
                 {
                     levelFadeOut = true;
+                    levelActive = false;
                     popLevelNextUpdate = true;
                     loadNextLevel = false;
+                }
+                else if (levelState.nextLevel == "menu")
+                {
+                    levelStack.Pop();
+                    levelStack.Pop();
+                    levelState.nextLevel = "";
+                }
+                else if (levelStack.Count > 0)
+                {
+                    levelStack.Pop();
                 }
             }
             else if (levelState.nextLevel != "" && levelState.nextLevel != null)
@@ -212,6 +244,7 @@ namespace ggj14
                 levelStack.Peek().loadContent();
                 levelActive = false;
                 levelFadeOut = true;
+                levelState.nextLevel = "";
             }
 
 
