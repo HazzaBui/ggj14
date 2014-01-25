@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using ggj14.helpers;
 
 namespace ggj14.entities.Entities
 {
     public class boy : Entity
     {
-        public override void Update(Entity[] entityList, gameObject[] objectList, int entPosition)
+        public override void Update(Entity[] entityList, gameObject[] objectList, int entPosition, playerControl controls)
         {
             Entity[] collidingEntities = new Entity[entityList.Length];
             int cEC = 0; //Colliding Entity Count
@@ -60,6 +61,20 @@ namespace ggj14.entities.Entities
                 }
             }
 
+            if (this.isActivePlayer)
+            {
+                if(controls.up)
+                    this.velocity.Y -= 0.25f;
+                if(controls.down)
+                    this.velocity.Y += 0.25f;
+                if(controls.left)
+                    this.velocity.X -= 0.25f;
+                if(controls.right)
+                    this.velocity.X += 0.25f;
+                if (controls.use)
+                    this.facingLeft = !this.facingLeft;
+            }
+
             foreach (gameObject gObj in collidingObjects)
             {
                 if ((gObj.getPosition().X < this.position.X) && this.velocity.X < 0 && (gObj.getInteractive() == false))
@@ -71,7 +86,8 @@ namespace ggj14.entities.Entities
                     this.velocity.X = 0;
                 }
             }
-            base.Update(entityList, objectList, entPosition);
+            this.position += this.velocity;
+            //base.Update(entityList, objectList, entPosition, controls);
         }
 
         public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)

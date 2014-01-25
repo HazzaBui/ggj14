@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using ggj14.helpers;
 
 namespace ggj14.entities
 {
@@ -96,7 +97,7 @@ namespace ggj14.entities
             texture = cm.Load<Texture2D>(texString);
         }
 
-        public virtual void Update(Entity[] entityList, gameObject[] objectList, int objPosition)
+        public virtual void Update(Entity[] entityList, gameObject[] objectList, int listPosition, playerControl controls)
         {
             //this.centre = new Vector2((position.X + texture.Width) / 2, (position.Y + texture.Height) / 2);
         }
