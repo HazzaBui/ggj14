@@ -109,7 +109,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="entities\Entities\boy.cs" />
     <Compile Include="entities\Entity.cs" />
+    <Compile Include="entities\gameObject.cs" />
     <Compile Include="helpers\types.cs" />
     <Compile Include="levels\baseLevel.cs" />
     <Compile Include="levels\mainMenu.cs" />
