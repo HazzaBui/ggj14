@@ -15,14 +15,14 @@ namespace ggj14.entities.Entities
             {
                Color[] entity1TextureData = new Color[this.texture.Width * this.texture.Height];
                 this.texture.GetData(entity1TextureData);
-                Color[] Entity2TextureData = new Color[entityList[i].getTexture().Width * entityList[i].getTexture().Height];
-                entityList[i].getTexture().GetData(Entity2TextureData);
+                Color[] entity2TextureData = new Color[entityList[i].getTexture().Width * entityList[i].getTexture().Height];
+                entityList[i].getTexture().GetData(entity2TextureData);
                 Vector2 size1, size2;
                 size1 = new Vector2(this.texture.Width, this.texture.Height);
                 size2 = new Vector2(entityList[i].getTexture().Width, entityList[i].getTexture().Height);
 
                 bool colliding;
-                //colliding  = checkCollision(this.position, entityList[i].getPosition, size1, size2, entity1TextureData, Entity2TextureData);
+                colliding = checkCollision(this.position, entityList[i].getPosition(), size1, size2, entity1TextureData, entity2TextureData);
             }
             base.Update(entityList, objPosition);
         }
