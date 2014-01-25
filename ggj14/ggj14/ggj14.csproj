@@ -110,7 +110,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="entities\Entity.cs" />
+    <Compile Include="helpers\types.cs" />
     <Compile Include="levels\baseLevel.cs" />
+    <Compile Include="levels\mainMenu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="levels\levelManager.cs" />
     <Compile Include="Program.cs" />

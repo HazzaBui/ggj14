@@ -9,10 +9,9 @@ namespace ggj14.levels
 {
     abstract class baseLevel
     {
-        abstract public baseLevel();
         abstract public void loadContent();
         abstract public void unloadContent();
-        abstract public void update(GameTime gameTime);
+        abstract public ggj14.helpers.levelReturn update(GameTime gameTime);
         abstract public void draw(GraphicsDeviceManager graphics, GameTime gameTime);
 
 
