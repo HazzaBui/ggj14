@@ -4,12 +4,15 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
+
 
 namespace ggj14.entities
 {
     public class gameObject
     {
         protected Texture2D texture;
+        string textureString;
         protected Vector2 position;
         protected Vector2 velocity;
         protected Vector2 centre;
@@ -49,11 +52,17 @@ namespace ggj14.entities
         {
             interactive = isInteractive;
         }
-        public gameObject(Texture2D inTex, Vector2 inPos)
+
+        public void LoadContent(ContentManager cm)
+        {
+            texture = cm.Load<Texture2D>(textureString);
+        }
+
+        public gameObject(string inTex, Vector2 inPos)
         {
             velocity = Vector2.Zero;
             position = inPos;
-            texture = inTex;
+            textureString = inTex;
             this.centre = new Vector2((inPos.X + texture.Width) / 2, (inPos.Y + texture.Height) / 2);
         }
         public void Update()
