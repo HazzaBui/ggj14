@@ -16,12 +16,10 @@
       <positiony>20</positiony>
       <scale>1</scale>
     </entity>
-    <entity>
-      <type>boy</type>
-      <texture>Content\textures\boy</texture>
-      <positionx>50</positionx>
-      <positiony>40</positiony>
-      <scale>1</scale>
-    </entity>
+    <chapterwarp>
+      <warpposx>10</warpposx>
+      <warpposy>300</warpposy>
+      <chapterto>chapter2</chapterto>
+    </chapterwarp>
   </chapter1>
  </level1>

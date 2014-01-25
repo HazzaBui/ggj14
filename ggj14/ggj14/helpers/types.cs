@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework;
 
 namespace ggj14.helpers
 {
@@ -38,6 +39,13 @@ namespace ggj14.helpers
         public Keys left;
         public Keys right;
         public Keys use;
+    }
+
+    public struct chapterWaypoint
+    {
+        Vector2 pos;
+        string chapterTo;
+        public chapterWaypoint(int x, int y, string to) { pos.X = x; pos.Y = y; chapterTo = to; }
     }
 
 }

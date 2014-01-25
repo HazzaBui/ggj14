@@ -19,6 +19,7 @@ namespace ggj14.levels
         List<entities.gameObject> gameObjects;
         List<Texture2D> backgroundTextures;
         List<string> backgroundTextureStrings;
+        List<helpers.chapterWaypoint> exitWaypoints;
 
         public gameLevel(SpriteBatch spriteBatch, ContentManager contentManager)
         {
@@ -30,6 +31,7 @@ namespace ggj14.levels
             backgroundTextures = new List<Texture2D>();
             backgroundTextureStrings = new List<string>();
             returnObj = new helpers.levelReturn();
+            exitWaypoints = new List<helpers.chapterWaypoint>();
 
         }
 
@@ -113,6 +115,37 @@ namespace ggj14.levels
                                 backgroundTextureStrings.Add(reader.Value);
                                 //backgroundTextureLocation = reader.Value;
                                 reader.Read();
+                            break;
+                            case "chapterwarp":
+                                reader.Read();
+                            {
+                                int posx, posy;
+                                string next = "";
+                                posx = posy = 0;
+
+                                while (reader.Name != "chapterwarp")
+                                {
+                                    switch (reader.Name)
+                                    {
+                                        case "warpposx":
+                                            reader.Read();
+                                            posx = Convert.ToInt32(reader.Value);
+                                            reader.Read();
+                                        break;
+                                        case "warpposy":
+                                            reader.Read();
+                                            posy = Convert.ToInt32(reader.Value);
+                                            reader.Read();
+                                        break;
+                                        case "chapterto":
+                                            reader.Read();
+                                            next = reader.Value;
+                                            reader.Read();
+                                        break;
+                                    }
+                                }
+                                exitWaypoints.Add(new helpers.chapterWaypoint(posx, posy, chapter));
+                            }
                             break;
                             case "gameobject":
                             {
