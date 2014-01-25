@@ -25,6 +25,12 @@ namespace ggj14.entities
         protected float speed;
         protected double frameCount;
         protected float scale = 1.0f;
+        protected string classType;
+
+        public string getClassType()
+        {
+            return classType;
+        }
 
         public Vector2 getVelocity()
         {

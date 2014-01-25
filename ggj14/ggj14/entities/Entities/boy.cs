@@ -21,12 +21,12 @@ namespace ggj14.entities.Entities
             this.velocity.Y += gravity;
             for(int i = 0; i < entityList.Length; i++) 
             {
-                Color[] entity1TextureData = new Color[64 * 64];
-                this.texture.GetData(0, new Rectangle(0, 0, 64, 64), entity1TextureData, 0, 64 * 64);
+                Color[] entity1TextureData = new Color[this.texture.Width / numOfFrames * this.texture.Height];
+                this.texture.GetData(0, new Rectangle(0, 0, this.texture.Width / numOfFrames, this.texture.Height), entity1TextureData, 0, entity1TextureData.Length);
                 Color[] entity2TextureData = new Color[entityList[i].getTexture().Width * entityList[i].getTexture().Height];
                 entityList[i].getTexture().GetData(entity2TextureData);
                 Vector2 size1, size2;
-                size1 = new Vector2(this.texture.Width, this.texture.Height);
+                size1 = new Vector2(this.texture.Width / numOfFrames, this.texture.Height);
                 size2 = new Vector2(entityList[i].getTexture().Width, entityList[i].getTexture().Height);
                 if (i != entPosition)
                 {
@@ -42,13 +42,13 @@ namespace ggj14.entities.Entities
                     }
                 }
                 else
-                    entityList[i].setCurrentlyColliding(false);
+                    entityList[i].setCurrentlyColliding(false); 
             }
 
             for (int i = 0; i < objectList.Length; i++)
             {
-                Color[] entity1TextureData = new Color[64 * 64];
-                this.texture.GetData(0, new Rectangle(0, 0, 64, 64), entity1TextureData, 0, 64 * 64);
+                Color[] entity1TextureData = new Color[this.texture.Width / numOfFrames * this.texture.Height];
+                this.texture.GetData(0, new Rectangle(0, 0, this.texture.Width / numOfFrames, this.texture.Height), entity1TextureData, 0, entity1TextureData.Length);
                 Color[] entity2TextureData = new Color[objectList[i].getTexture().Width * objectList[i].getTexture().Height];
                 objectList[i].getTexture().GetData(entity2TextureData);
                 Vector2 size1, size2;
@@ -100,7 +100,7 @@ namespace ggj14.entities.Entities
             {
                 frameCount = 0;
             }
-            textRect = new Rectangle(64 * (int)(frameCount / 10), 0, 64, 64);
+            textRect = new Rectangle(this.texture.Width / numOfFrames * (int)(frameCount / 10), 0, this.texture.Width / numOfFrames, this.texture.Height);
             if (collidingObjects[0] != null)
             {
                 foreach (gameObject gObj in collidingObjects)
@@ -164,6 +164,7 @@ namespace ggj14.entities.Entities
             numOfFrames = 4;
             speed = 0.25f;
             gravity = 1.0f;
+            classType = "Boy";
 
             textRect = new Rectangle(0, 0, frameWidth, frameHeight);
         }
