@@ -47,7 +47,7 @@ namespace ggj14.entities
             velocity = inVel;
         }
 
-        public void setPosition(Vector2 inPos)
+        public void setPosition(Vector2 inPos) 
         {
             position = inPos;
         }
@@ -76,7 +76,7 @@ namespace ggj14.entities
             centre = new Vector2((position.X + texture.Width) / 2, (position.Y + texture.Height) / 2);
         }
 
-        public virtual void Update(Entity[] entityList)
+        public virtual void Update(Entity[] entityList, int objPosition)
         {
             //this.centre = new Vector2((position.X + texture.Width) / 2, (position.Y + texture.Height) / 2);
         }
@@ -84,6 +84,20 @@ namespace ggj14.entities
         public virtual void Draw(SpriteBatch spriteBatch)
         {
             //spriteBatch.Draw(texture, centre, null, Color.White);
+        }
+
+        private bool checkCollision(Vector2 entityPos1, Vector2 entityPos2, Vector2 entitySize1, Vector2 entitySize2)
+        {
+            double distance = Math.Sqrt(Math.Pow(Math.Abs(entityPos1.X - entityPos2.X), 2) + Math.Pow(Math.Abs(entityPos1.Y - entityPos2.Y), 2));
+            if (distance * distance > (Math.Pow(entitySize1.X, 2) + Math.Pow(entitySize1.Y, 2)) + (Math.Pow(entitySize2.X, 2) + Math.Pow(entitySize2.Y, 2)))
+                return false;
+            else
+            {
+
+
+
+            }
+                return true;
         }
     }
 }
