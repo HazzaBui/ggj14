@@ -112,8 +112,10 @@
     <Compile Include="entities\Entities\boy.cs" />
     <Compile Include="entities\Entity.cs" />
     <Compile Include="entities\gameObject.cs" />
+    <Compile Include="helpers\classLoading.cs" />
     <Compile Include="helpers\types.cs" />
     <Compile Include="levels\baseLevel.cs" />
+    <Compile Include="levels\gameLevel.cs" />
     <Compile Include="levels\mainMenu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="levels\levelManager.cs" />

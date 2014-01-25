@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<level1>
+  <chapter1>
+    <backgroundtexture></backgroundtexture>
+    <gameobject>
+      <texture></texture>
+      <positionx></positionx>
+      <positiony></positiony>
+      <scale></scale>
+    </gameobject>
+    <entity>
+      <type>boy</type>
+      <texture>Content\textures\boy</texture>
+      <positionx>10</positionx>
+      <positiony>20</positiony>
+      <scale>1</scale>
+    </entity>
+  </chapter1>
+ </level1>
