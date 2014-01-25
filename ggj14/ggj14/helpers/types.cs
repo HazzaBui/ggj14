@@ -14,13 +14,13 @@ namespace ggj14.helpers
 
     struct levelReturn
     {
-        public int nextLevel;
+        public string nextLevel;
         public characters character;
         public int previousLevel;
         public bool exitLevel;
     }
 
-    struct playerControl
+    public struct playerControl
     {
         public bool up;
         public bool down;
