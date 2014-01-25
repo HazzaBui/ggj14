@@ -143,6 +143,7 @@ namespace ggj14.levels
                                             reader.Read();
                                         break;
                                     }
+                                    reader.Read();
                                 }
                                 exitWaypoints.Add(new helpers.chapterWaypoint(posx, posy, chapter));
                             }
