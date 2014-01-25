@@ -93,6 +93,7 @@ namespace ggj14.levels
             {
                 e.Draw(sb);
             }
+            
         }
 
 
@@ -192,10 +193,9 @@ namespace ggj14.levels
                                 reader.Read();
                                 //Load entity data
                                 int posx, posy, scale;
-                                string text, objType;
+                                string objType;
                                 posx = 0;
                                 posy = 0;
-                                text = "";
                                 objType = "";
                                 while (reader.Name != "entity")
                                 {
@@ -204,11 +204,6 @@ namespace ggj14.levels
                                         case "type":
                                             reader.Read();
                                             objType = reader.Value;
-                                            reader.Read();
-                                            break;
-                                        case "texture":
-                                            reader.Read();
-                                            text = reader.Value;
                                             reader.Read();
                                             break;
                                         case "positionx":
@@ -229,7 +224,19 @@ namespace ggj14.levels
                                     }
                                     reader.Read();
                                 }
-                                entities.Add(helpers.classLoading.loadEntity(text, posx, posy, objType));
+                                string texture = "";
+                                string isound = "";
+                                string ssound = "";
+                                string bsound = "";
+                                int entDefinition = helpers.classLoading.findEntityDefinitionEntry(objType);
+                                if (entDefinition >= 0)
+                                {
+                                    texture = helpers.classLoading.entitiyDefinitions.ElementAt(entDefinition).texture;
+                                    isound = helpers.classLoading.entitiyDefinitions.ElementAt(entDefinition).interactionSound;
+                                    ssound = helpers.classLoading.entitiyDefinitions.ElementAt(entDefinition).stepSound;
+                                    bsound = helpers.classLoading.entitiyDefinitions.ElementAt(entDefinition).backgroundMusic;
+                                }
+                                entities.Add(helpers.classLoading.loadEntity(texture, posx, posy, objType));
                             }
                             break;
                                 //Add additional items to load here

@@ -11,7 +11,6 @@
     </gameobject>
     <entity>
       <type>boy</type>
-      <texture>Content\textures\boy</texture>
       <positionx>10</positionx>
       <positiony>20</positiony>
       <scale>1</scale>

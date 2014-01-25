@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
 
+
 namespace ggj14.helpers
 {
     enum characters
@@ -43,9 +44,19 @@ namespace ggj14.helpers
 
     public struct chapterWaypoint
     {
-        Vector2 pos;
-        string chapterTo;
+        public Vector2 pos;
+        public string chapterTo;
         public chapterWaypoint(int x, int y, string to) { pos.X = x; pos.Y = y; chapterTo = to; }
     }
 
+    public struct entityDefinition
+    {
+        public string identifier;
+        public string texture;
+        public string interactionSound;
+        public string stepSound;
+        public string backgroundMusic;
+        public entityDefinition(string id, string text, string isound, string ssound, string bsound)
+        { identifier = id; texture = text; interactionSound = isound; stepSound = ssound; backgroundMusic = bsound; }
+    }
 }

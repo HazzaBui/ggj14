@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<entities>
+  <entity>
+    <entityname>boy</entityname>
+    <texture>Content\textures\boy</texture>
+    <interactivesound>Content\sounds\</interactivesound>
+    <stepsound></stepsound>
+    <backgroundmusic></backgroundmusic>
+  </entity>
+</entities>

@@ -49,6 +49,9 @@ namespace ggj14
 
         protected override void Initialize()
         {
+            //Intialise entity definitions
+            helpers.classLoading.loadEntityDefinitions("Content\\xmlContent\\entityDefinitions.xml");
+
             //Read player input xml file
             while (reader.Read())
             {
