@@ -14,6 +14,7 @@ namespace ggj14.entities
         protected Vector2 velocity;
         protected Vector2 centre;
         protected bool facingLeft;
+        protected bool isActivePlayer;
 
 
         public Vector2 getVelocity()
@@ -36,6 +37,11 @@ namespace ggj14.entities
             return centre;
         }
 
+        public bool getIsActive()
+        {
+            return isActivePlayer;
+        }
+
         public void setVelocity(Vector2 inVel)
         {
             velocity = inVel;
@@ -54,6 +60,11 @@ namespace ggj14.entities
         public void setCentre(Vector2 inCentre)
         {
             centre = inCentre;
+        }
+
+        public void setIsActive(bool inIsActive)
+        {
+            isActivePlayer = inIsActive;
         }
 
         public Entity(Texture2D inTex, Vector2 inPos)
