@@ -15,7 +15,7 @@ namespace ggj14.entities
         protected Vector2 centre;
         protected bool facingLeft;
         protected bool isActivePlayer;
-
+        protected bool currentlyColliding;
 
         public Vector2 getVelocity()
         {
@@ -40,6 +40,11 @@ namespace ggj14.entities
         public bool getIsActive()
         {
             return isActivePlayer;
+        }
+
+        public bool getCurrentlyColliding()
+        {
+            return currentlyColliding;
         }
 
         public void setVelocity(Vector2 inVel)
@@ -67,16 +72,23 @@ namespace ggj14.entities
             isActivePlayer = inIsActive;
         }
 
+        public void setCurrentlyColliding(bool inIsColl)
+        {
+            currentlyColliding = inIsColl;
+        }
+
         public Entity(Texture2D inTex, Vector2 inPos)
         {
             velocity = Vector2.Zero;
             facingLeft = false;
             texture = inTex;
             position = inPos;
+            isActivePlayer = false;
+            currentlyColliding = false
             centre = new Vector2((position.X + texture.Width) / 2, (position.Y + texture.Height) / 2);
         }
 
-        public virtual void Update(Entity[] entityList, int objPosition)
+        public virtual void Update(Entity[] entityList, gameObject[] objectList, int objPosition)
         {
             //this.centre = new Vector2((position.X + texture.Width) / 2, (position.Y + texture.Height) / 2);
         }

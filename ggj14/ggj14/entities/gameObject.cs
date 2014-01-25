@@ -40,6 +40,11 @@ namespace ggj14.entities
             velocity = inVel;
         }
 
+        public Texture2D getTexture()
+        {
+            return texture;
+        }
+
         public void setInteractive(bool isInteractive)
         {
             interactive = isInteractive;

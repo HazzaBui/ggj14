@@ -9,8 +9,14 @@ namespace ggj14.entities.Entities
 {
     public class boy : Entity
     {
-        public override void Update(Entity[] entityList, int objPosition)
+        public override void Update(Entity[] entityList, gameObject[] objectList, int entPosition)
         {
+            Entity[] collidingEntities = new Entity[entityList.Length];
+            int cEC = 0; //Colliding Entity Count
+
+            gameObject[] collidingObjects = new gameObject[objectList.Length];
+            int cOC = 0;
+
             for(int i = 0; i < entityList.Length; i++) 
             {
                Color[] entity1TextureData = new Color[this.texture.Width * this.texture.Height];
@@ -20,11 +26,52 @@ namespace ggj14.entities.Entities
                 Vector2 size1, size2;
                 size1 = new Vector2(this.texture.Width, this.texture.Height);
                 size2 = new Vector2(entityList[i].getTexture().Width, entityList[i].getTexture().Height);
-
-                bool colliding;
-                colliding = checkCollision(this.position, entityList[i].getPosition(), size1, size2, entity1TextureData, entity2TextureData);
+                if (i != entPosition)
+                {
+                    bool colliding = checkCollision(this.position, entityList[i].getPosition(), size1, size2, entity1TextureData, entity2TextureData);
+                    if (colliding)
+                    {
+                        collidingEntities[cEC] = entityList[i];
+                        entityList[i].setCurrentlyColliding(true);
+                    }
+                    else
+                    {
+                        entityList[i].setCurrentlyColliding(false);
+                    }
+                }
+                else
+                    entityList[i].setCurrentlyColliding(false);
             }
-            base.Update(entityList, objPosition);
+
+            for (int i = 0; i < objectList.Length; i++)
+            {
+                Color[] entity1TextureData = new Color[this.texture.Width * this.texture.Height];
+                this.texture.GetData(entity1TextureData);
+                Color[] entity2TextureData = new Color[objectList[i].getTexture().Width * objectList[i].getTexture().Height];
+                objectList[i].getTexture().GetData(entity2TextureData);
+                Vector2 size1, size2;
+                size1 = new Vector2(this.texture.Width, this.texture.Height);
+                size2 = new Vector2(objectList[i].getTexture().Width, objectList[i].getTexture().Height);
+
+                bool colliding = checkCollision(this.position, objectList[i].getPosition(), size1, size2, entity1TextureData, entity2TextureData);
+                if (colliding)
+                {
+                    collidingObjects[cOC] = objectList[i];
+                }
+            }
+
+            foreach (gameObject gObj in collidingObjects)
+            {
+                if ((gObj.getPosition().X < this.position.X) && this.velocity.X < 0 && (gObj.getInteractive() == false))
+                {
+                    this.velocity.X = 0;
+                }
+                if ((gObj.getPosition().X > this.position.X) && this.velocity.X > 0 && (gObj.getInteractive() == false))
+                {
+                    this.velocity.X = 0;
+                }
+            }
+            base.Update(entityList, objectList, entPosition);
         }
 
         public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
