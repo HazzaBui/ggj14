@@ -14,6 +14,7 @@ namespace ggj14.entities
         protected Vector2 position;
         protected Vector2 velocity;
         protected Vector2 centre;
+        protected string texString;
         protected bool facingLeft;
         protected bool isActivePlayer;
         protected bool currentlyColliding;
@@ -79,8 +80,9 @@ namespace ggj14.entities
             currentlyColliding = inIsColl;
         }
 
-        public Entity(Vector2 inPos)
+        public Entity(Vector2 inPos, string inTexString)
         {
+            texString = inTexString;
             velocity = Vector2.Zero;
             facingLeft = false;
             position = inPos;
@@ -89,7 +91,7 @@ namespace ggj14.entities
             centre = new Vector2((position.X + texture.Width) / 2, (position.Y + texture.Height) / 2);
         }
 
-        public void LoadContent(ContentManager cm, string texString)
+        public void LoadContent(ContentManager cm)
         {
             texture = cm.Load<Texture2D>(texString);
         }
