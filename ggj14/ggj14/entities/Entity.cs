@@ -86,18 +86,45 @@ namespace ggj14.entities
             //spriteBatch.Draw(texture, centre, null, Color.White);
         }
 
-        private bool checkCollision(Vector2 entityPos1, Vector2 entityPos2, Vector2 entitySize1, Vector2 entitySize2)
+        protected bool checkCollision(Vector2 entityPos1, Vector2 entityPos2, Vector2 entitySize1, Vector2 entitySize2, Color[] color1, Color[] color2)
         {
             double distance = Math.Sqrt(Math.Pow(Math.Abs(entityPos1.X - entityPos2.X), 2) + Math.Pow(Math.Abs(entityPos1.Y - entityPos2.Y), 2));
             if (distance * distance > (Math.Pow(entitySize1.X, 2) + Math.Pow(entitySize1.Y, 2)) + (Math.Pow(entitySize2.X, 2) + Math.Pow(entitySize2.Y, 2)))
                 return false;
             else
             {
+                Rectangle rect1, rect2;
+                rect1 = new Rectangle((int)entityPos1.X, (int)entityPos1.Y, (int)entitySize1.X, (int)entitySize1.Y);
+                rect2 = new Rectangle((int)entityPos2.X, (int)entityPos2.Y, (int)entitySize2.X, (int)entitySize2.Y);
+                int top = Math.Max(rect1.Top, rect2.Top);
+                int bottom = Math.Min(rect1.Bottom, rect2.Bottom);
+                int left = Math.Max(rect1.Left, rect2.Left);
+                int right = Math.Min(rect1.Right, rect2.Right);
 
+                // Check every point within the intersection bounds
+                for (int y = top; y < bottom; y++)
+                {
+                    for (int x = left; x < right; x++)
+                    {
+                        // Get the color of both pixels at this point
+                        Color colorA = color1[(x - rect1.Left) +
+                                             (y - rect1.Top) * rect1.Width];
+                        Color colorB = color2[(x - rect2.Left) +
+                                             (y - rect2.Top) * rect2.Width];
 
+                        // If both pixels are not completely transparent,
+                        if (colorA.A != 0 && colorB.A != 0)
+                        {
+                            // then an intersection has been found
+                            return true;
+                        }
+                    }
+                }
+
+                // No intersection found
+                return false;
 
             }
-                return true;
         }
     }
 }
