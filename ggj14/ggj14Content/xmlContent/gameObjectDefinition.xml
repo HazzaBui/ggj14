@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<gameobjects>
+  <gameobject>
+    <objectname>mousetrap</objectname>
+    <texture>Content\textures\MouseTrap</texture>
+    <interactivesound>Content\sounds\</interactivesound>
+  </gameobject>
+</gameobjects>

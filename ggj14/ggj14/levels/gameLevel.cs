@@ -155,15 +155,15 @@ namespace ggj14.levels
                                 //Load game object data
                                 int posx, posy, scale;
                                 posx = posy = scale = 0;
-                                string text = "";
+                                string type = "";
 
                                 while (reader.Name != "gameobject")
                                 {
                                     switch (reader.Name)
                                     {
-                                        case "texture":
+                                        case "type":
                                             reader.Read();
-                                            text = reader.Value;
+                                            type = reader.Value;
                                             reader.Read();
                                         break;
                                         case "positionx":
@@ -184,8 +184,18 @@ namespace ggj14.levels
                                     }
                                     reader.Read();
                                 }
+                                int goIndex = helpers.classLoading.findGameObjectDefinitionEntry(type);
+
+                                string texture = "";
+                                string sound = "";
+                                if (goIndex >= 0)
+                                {
+                                    texture = helpers.classLoading.objectDefinitions.ElementAt(goIndex).texture;
+                                    sound = helpers.classLoading.objectDefinitions.ElementAt(goIndex).interactionSound;
+                                }
+
                                 //create go
-                                gameObjects.Add(helpers.classLoading.loadGameObject(text, posx, posy));
+                                gameObjects.Add(helpers.classLoading.loadGameObject(texture, posx, posy));
                             }
                             break;
                             case "entity":
