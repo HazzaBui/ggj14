@@ -18,7 +18,7 @@ namespace ggj14.entities.Entities
             gameObject[] collidingObjects = new gameObject[objectList.Length];
             int cOC = 0;
 
-            this.velocity.Y += 0.1f;
+            this.velocity.Y += 1.0f;
             for(int i = 0; i < entityList.Length; i++) 
             {
                Color[] entity1TextureData = new Color[this.texture.Width * this.texture.Height];
@@ -66,10 +66,10 @@ namespace ggj14.entities.Entities
 
             if (this.isActivePlayer)
             {
-                if(controls.up)
+                /*if(controls.up)
                     this.velocity.Y -= 0.25f;
                 if(controls.down)
-                    this.velocity.Y += 0.25f;
+                    this.velocity.Y += 0.25f;*/
                 if (controls.left)
                 {
                     if (!this.facingLeft)
@@ -140,7 +140,7 @@ namespace ggj14.entities.Entities
                 this.position.X = 734;
             }
             this.position += this.velocity;
-            this.velocity *= 0.96f;
+            this.velocity *= 0.9f;
             //base.Update(entityList, objectList, entPosition, controls);
         }
 
