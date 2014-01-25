@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework.Input;
 
 namespace ggj14.helpers
 {
@@ -21,11 +22,21 @@ namespace ggj14.helpers
 
     struct playerControl
     {
-        bool up;
-        bool down;
-        bool left;
-        bool right;
-        bool use;
+        public bool up;
+        public bool down;
+        public bool left;
+        public bool right;
+        public bool use;
+        public playerControl(bool x) { up = x; down = x; left = x; right = x; use = x; }
+    }
+
+    struct playerKeys
+    {
+        public Keys up;
+        public Keys down;
+        public Keys left;
+        public Keys right;
+        public Keys use;
     }
 
 }

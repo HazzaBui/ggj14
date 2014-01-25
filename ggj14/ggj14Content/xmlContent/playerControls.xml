@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<players>
+  <player1>
+    <up>w</up>
+    <down>s</down>
+    <left>a</left>
+    <right>d</right>
+    <use>e</use>
+  </player1>
+  <player2>
+    <up>"w"</up>
+    <down></down>
+    <left></left>
+    <right></right>
+    <use></use>
+  </player2>
+</players>
