@@ -76,7 +76,8 @@ namespace ggj14.entities.Entities
 
         public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
         {
-            base.Draw(spriteBatch);
+            spriteBatch.Draw(texture, position, null, Color.White);
+           
         }
 
         public boy(Vector2 inPos, string inTexString) : base (inPos, inTexString)
