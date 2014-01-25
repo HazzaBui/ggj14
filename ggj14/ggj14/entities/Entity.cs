@@ -16,6 +16,7 @@ namespace ggj14.entities
         protected Vector2 velocity;
        // protected Vector2 centre;
         protected string texString;
+        protected Rectangle textRect;
         protected bool facingLeft;
         protected bool isActivePlayer;
         protected bool currentlyColliding;

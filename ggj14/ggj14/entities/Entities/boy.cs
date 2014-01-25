@@ -67,23 +67,31 @@ namespace ggj14.entities.Entities
                     this.velocity.Y -= 0.25f;
                 if(controls.down)
                     this.velocity.Y += 0.25f;
-                if(controls.left)
+                if (controls.left)
+                {
+                    this.facingLeft = true;
                     this.velocity.X -= 0.25f;
-                if(controls.right)
+                }
+                if (controls.right)
+                {
+                    this.facingLeft = false;
                     this.velocity.X += 0.25f;
+                }
                 if (controls.use)
                     this.facingLeft = !this.facingLeft;
             }
-
-            foreach (gameObject gObj in collidingObjects)
+            if (collidingObjects[0] != null)
             {
-                if ((gObj.getPosition().X < this.position.X) && this.velocity.X < 0 && (gObj.getInteractive() == false))
+                foreach (gameObject gObj in collidingObjects)
                 {
-                    this.velocity.X = 0;
-                }
-                if ((gObj.getPosition().X > this.position.X) && this.velocity.X > 0 && (gObj.getInteractive() == false))
-                {
-                    this.velocity.X = 0;
+                    if ((gObj.getPosition().X < this.position.X) && this.velocity.X < 0 && (gObj.getInteractive() == false))
+                    {
+                        this.velocity.X = 0;
+                    }
+                    if ((gObj.getPosition().X > this.position.X) && this.velocity.X > 0 && (gObj.getInteractive() == false))
+                    {
+                        this.velocity.X = 0;
+                    }
                 }
             }
             this.position += this.velocity;
@@ -104,11 +112,7 @@ namespace ggj14.entities.Entities
             int frameWidth = 64;
             int frameHeight = 64;
 
-            Rectangle sourceRect = new Rectangle(0, 0, frameWidth, frameHeight);
-            for (int i = 0; i < 3; i++)
-            {
-                //animationFrames[i] = texture.GetData<Texture2D>(1, sourceRect, texture, 0, 3);
-            }
+            textRect = new Rectangle(0, 0, frameWidth / 4, frameHeight / 4);
         }
     }
 }
