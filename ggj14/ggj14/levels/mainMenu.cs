@@ -15,7 +15,7 @@ namespace ggj14.levels
         ContentManager cm;
         ggj14.helpers.levelReturn returnObj;
         String[] menuStrings;
-        float menuSize;
+        float[] menuSize;
         int menuSelection;
         Vector2 menuTopLeftPos;
         SpriteFont menuFont;
@@ -29,6 +29,7 @@ namespace ggj14.levels
             returnObj = new ggj14.helpers.levelReturn();
             returnObj.exitLevel = false;
             menuStrings = new String[2];
+            menuSize = new float[menuStrings.Length];
 
             loadContent();
             menuTopLeftPos = new Vector2();
@@ -40,7 +41,9 @@ namespace ggj14.levels
         {
             menuStrings[0] = "Level 1";
             menuStrings[1] = "Exit";
-            menuSize = 1.2f;
+            for (int i = 0; i < menuSize.Length; i++)
+                menuSize[i] = 0.0f;
+            //menuSize = 1.2f;
             menuSelection = 0;
             menuTopLeftPos.X = 20.0f;
             menuTopLeftPos.Y = 20.0f;
@@ -67,33 +70,48 @@ namespace ggj14.levels
                 if (controller.up)
                 {
                     menuSelection -= 1;
+                    if (menuSelection < 0)
+                        menuSelection = menuStrings.Length - 1;
+                    if (menuSelection >= menuStrings.Length)
+                        menuSelection = 0;
                     menuTimer = 0;
-                    menuSize = 1.2f;
+                    menuSize[menuSelection] = 1.2f;
                     isGrowing = true;
                 }
                 else if (controller.down)
                 {
                     menuSelection += 1;
+                    if (menuSelection < 0)
+                        menuSelection = menuStrings.Length - 1;
+                    if (menuSelection >= menuStrings.Length)
+                        menuSelection = 0;
                     menuTimer = 0;
-                    menuSize = 1.2f;
+                    menuSize[menuSelection] = 1.2f;
                     isGrowing = true;
                 }
-                if (menuSelection < 0)
-                    menuSelection = menuStrings.Length - 1;
-                if (menuSelection >= menuStrings.Length)
-                    menuSelection = 0;
+                
+            }
+
+            for (int i = 0; i < menuSize.Length; i++)
+            {
+                if (i != menuSelection)
+                {
+                    menuSize[i] -= 0.015f;
+                }
+                if (menuSize[i] < 1.2f)
+                    menuSize[i] = 1.2f;
             }
 
             if (isGrowing)
             {
-                menuSize += 0.015f;
-                if (menuSize > 1.7f)
+                menuSize[menuSelection] += 0.015f;
+                if (menuSize[menuSelection] > 1.7f)
                     isGrowing = false;
             }
             else
             {
-                menuSize -= 0.015f;
-                if (menuSize < 1.2f)
+                menuSize[menuSelection] -= 0.015f;
+                if (menuSize[menuSelection] < 1.2f)
                     isGrowing = true;
             }
 
@@ -107,6 +125,10 @@ namespace ggj14.levels
             {
                 if (key == Keys.Enter)
                 {
+                    if (menuSelection == menuStrings.Length - 1)
+                    {
+                        returnObj.exitLevel = true;
+                    }
                     //Add new level to stack
 
                 }
@@ -124,10 +146,11 @@ namespace ggj14.levels
             {
                 if(i == menuSelection)
                     //sb.DrawString(menuFont, menuStrings[i], new Vector2(menuTopLeftPos.X, menuTopLeftPos.Y + i * 40), Color.Yellow);
-                    sb.DrawString(menuFont, menuStrings[i], new Vector2(menuTopLeftPos.X, menuTopLeftPos.Y + i * 40), Color.Yellow, 0.0f, new Vector2(0.0f, 0.0f), menuSize, SpriteEffects.None, 0.0f);
+                    sb.DrawString(menuFont, menuStrings[i], new Vector2(menuTopLeftPos.X, menuTopLeftPos.Y + i * 40), Color.Yellow, 0.0f, new Vector2(0.0f, 0.0f), menuSize[i], SpriteEffects.None, 0.0f);
                     
                 else
-                    sb.DrawString(menuFont, menuStrings[i], new Vector2(menuTopLeftPos.X, menuTopLeftPos.Y + i * 40), Color.White);
+                    sb.DrawString(menuFont, menuStrings[i], new Vector2(menuTopLeftPos.X, menuTopLeftPos.Y + i * 40), Color.White, 0.0f, new Vector2(0.0f, 0.0f), menuSize[i], SpriteEffects.None, 0.0f);
+                    //sb.DrawString(menuFont, menuStrings[i], new Vector2(menuTopLeftPos.X, menuTopLeftPos.Y + i * 40), Color.White);
             }
 
 

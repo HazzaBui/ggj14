@@ -145,6 +145,15 @@ namespace ggj14
                 levelState = levelStack.Peek().update(gameTime, player1);
             }
 
+            if (levelState.exitLevel)
+            {
+                if (levelStack.Count == 1)
+                {
+                    levelStack.Pop();
+                    Exit();
+                }
+            }
+
 
             base.Update(gameTime);
         }
