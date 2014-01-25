@@ -71,22 +71,35 @@ namespace ggj14.entities.Entities
                     this.velocity.Y += 0.25f;
                 if (controls.left)
                 {
-                    this.facingLeft = true;
+                    if (!this.facingLeft)
+                    {
+                        this.facingLeft = true;
+                        frameCount = 0;
+                    }
+                    frameCount++;
                     this.velocity.X -= 0.25f;
                 }
                 if (controls.right)
                 {
-                    this.facingLeft = false;
+                    if (this.facingLeft)
+                    {
+                        this.facingLeft = false; 
+                        frameCount = 0;
+                    }
+                    frameCount++;
                     this.velocity.X += 0.25f;
+
                 }
                 if (controls.use)
                 {
-                    textRect = new Rectangle(64 * frameCount, 0, 64, 64);
                     frameCount++;
-                    if (frameCount > 3)
-                        frameCount = 0;
                 }
             }
+            if (frameCount > 39 || (!controls.right && !controls.left))
+            {
+                frameCount = 0;
+            }
+            textRect = new Rectangle(64 * (int)(frameCount / 10), 0, 64, 64);
             if (collidingObjects[0] != null)
             {
                 foreach (gameObject gObj in collidingObjects)
@@ -110,13 +123,16 @@ namespace ggj14.entities.Entities
                 }
             }
             this.position += this.velocity;
-            this.velocity *= 0.9f;
+            this.velocity *= 0.96f;
             //base.Update(entityList, objectList, entPosition, controls);
         }
 
         public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, position, textRect, Color.White);           
+            if (!facingLeft)
+                spriteBatch.Draw(texture, position, textRect, Color.White);
+            else
+                spriteBatch.Draw(texture, this.position, textRect, Color.White, 0, Vector2.Zero, 1, SpriteEffects.FlipHorizontally, 0);
         }
 
         public boy(Vector2 inPos, string inTexString) : base (inPos, inTexString)

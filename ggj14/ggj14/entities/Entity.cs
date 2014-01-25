@@ -21,7 +21,7 @@ namespace ggj14.entities
         protected bool isActivePlayer;
         protected bool currentlyColliding;
         protected Texture2D[] animationFrames;
-        protected int frameCount;
+        protected double frameCount;
 
         public Vector2 getVelocity()
         {
