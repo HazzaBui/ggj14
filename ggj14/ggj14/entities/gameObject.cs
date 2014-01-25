@@ -15,8 +15,13 @@ namespace ggj14.entities
         string textureString;
         protected Vector2 position;
         protected Vector2 velocity;
-       // protected Vector2 centre;
         protected bool interactive;
+        protected string objectType;
+
+        public string getObjectType()
+        {
+            return objectType;
+        }
 
         public Vector2 getPosition()
         {
@@ -31,6 +36,11 @@ namespace ggj14.entities
         public bool getInteractive()
         {
             return interactive;
+        }
+
+        public void setObjectType(string inType)
+        {
+            objectType = inType;
         }
 
         public void setPosition(Vector2 inPos)
@@ -58,16 +68,16 @@ namespace ggj14.entities
             texture = cm.Load<Texture2D>(textureString);
         }
 
-        public gameObject(string inTex, Vector2 inPos)
+        public gameObject(string inTex, Vector2 inPos, string inObjectType)
         {
             velocity = Vector2.Zero;
             position = inPos;
             textureString = inTex;
-            //this.centre = new Vector2((inPos.X + texture.Width) / 2, (inPos.Y + texture.Height) / 2);
+            objectType = inObjectType;
         }
         public void Update()
         {
-         //   this.centre = new Vector2((position.X + texture.Width) / 2, (position.Y + texture.Height) / 2);
+
         }
 
         public void Draw(SpriteBatch spriteBatch)
