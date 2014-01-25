@@ -79,7 +79,7 @@ namespace ggj14.entities.Entities
             base.Draw(spriteBatch);
         }
 
-        public boy(Vector2 inPos) : base (inPos)
+        public boy(Vector2 inPos, string inTexString) : base (inPos, inTexString)
         {
             this.position = inPos;
             this.centre = new Vector2((this.position.X + texture.Width) / 2, (this.position.Y + texture.Height) / 2);
