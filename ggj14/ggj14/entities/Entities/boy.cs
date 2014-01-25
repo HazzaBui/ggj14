@@ -18,6 +18,7 @@ namespace ggj14.entities.Entities
             gameObject[] collidingObjects = new gameObject[objectList.Length];
             int cOC = 0;
 
+            this.velocity.Y += 0.1f;
             for(int i = 0; i < entityList.Length; i++) 
             {
                Color[] entity1TextureData = new Color[this.texture.Width * this.texture.Height];
@@ -121,6 +122,22 @@ namespace ggj14.entities.Entities
                         this.velocity.Y = 0;
                     }
                 }
+            }
+            if (this.position.Y > 336)
+            {
+                this.position.Y = 336;
+                this.velocity.Y = 0;
+
+            }
+            if (this.position.X < -20)
+            {
+                this.velocity.X = 0;
+                this.position.X = -20;
+            }
+            if (this.position.X > 734)
+            {
+                this.velocity.X = 0;
+                this.position.X = 734;
             }
             this.position += this.velocity;
             this.velocity *= 0.96f;
