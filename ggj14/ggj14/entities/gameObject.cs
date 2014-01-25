@@ -15,7 +15,7 @@ namespace ggj14.entities
         string textureString;
         protected Vector2 position;
         protected Vector2 velocity;
-        protected Vector2 centre;
+       // protected Vector2 centre;
         protected bool interactive;
 
         public Vector2 getPosition()
@@ -63,16 +63,16 @@ namespace ggj14.entities
             velocity = Vector2.Zero;
             position = inPos;
             textureString = inTex;
-            this.centre = new Vector2((inPos.X + texture.Width) / 2, (inPos.Y + texture.Height) / 2);
+            //this.centre = new Vector2((inPos.X + texture.Width) / 2, (inPos.Y + texture.Height) / 2);
         }
         public void Update()
         {
-            this.centre = new Vector2((position.X + texture.Width) / 2, (position.Y + texture.Height) / 2);
+         //   this.centre = new Vector2((position.X + texture.Width) / 2, (position.Y + texture.Height) / 2);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, centre, null, Color.White);
+            spriteBatch.Draw(texture, position, null, Color.White);
         }
     }
 }
