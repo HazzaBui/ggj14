@@ -76,14 +76,14 @@ namespace ggj14.entities
             centre = new Vector2((position.X + texture.Width) / 2, (position.Y + texture.Height) / 2);
         }
 
-        public virtual void Update()
+        public virtual void Update(Entity[] entityList)
         {
-            this.centre = new Vector2((position.X + texture.Width) / 2, (position.Y + texture.Height) / 2);
+            //this.centre = new Vector2((position.X + texture.Width) / 2, (position.Y + texture.Height) / 2);
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, centre, null, Color.White);
+            //spriteBatch.Draw(texture, centre, null, Color.White);
         }
     }
 }
