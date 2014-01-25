@@ -80,7 +80,12 @@ namespace ggj14.entities.Entities
                     this.velocity.X += 0.25f;
                 }
                 if (controls.use)
-                    this.facingLeft = !this.facingLeft;
+                {
+                    textRect = new Rectangle(64 * frameCount, 0, 64, 64);
+                    frameCount++;
+                    if (frameCount > 3)
+                        frameCount = 0;
+                }
             }
             if (collidingObjects[0] != null)
             {
@@ -122,6 +127,7 @@ namespace ggj14.entities.Entities
             this.isActivePlayer = true;
             int frameWidth = 64;
             int frameHeight = 64;
+            frameCount = 0;
 
             textRect = new Rectangle(0, 0, frameWidth, frameHeight);
         }
