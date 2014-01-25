@@ -170,7 +170,9 @@ namespace ggj14
 
             if (levelStack.Count == 0 && loadNextLevel)
             {
-                levelStack.Push(new ggj14.levels.mainMenu(spriteBatch, contentManager));
+                levelStack.Push(new ggj14.levels.gameLevel(spriteBatch, contentManager));
+                levelStack.Peek().intialise("Content\\xmlContent\\level1.xml", "chapter1");
+                //levelStack.Push(new ggj14.levels.mainMenu(spriteBatch, contentManager));
             }
 
             if(levelStack.Count > 0)
