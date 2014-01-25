@@ -28,7 +28,7 @@ namespace ggj14.levels
             cm = contentManager;
             returnObj = new ggj14.helpers.levelReturn();
             returnObj.exitLevel = false;
-            menuStrings = new String[2];
+            menuStrings = new String[3];
             menuSize = new float[menuStrings.Length];
 
             loadContent();
@@ -40,7 +40,8 @@ namespace ggj14.levels
         private void initialise()
         {
             menuStrings[0] = "Level 1";
-            menuStrings[1] = "Exit";
+            menuStrings[1] = "Level 2";
+            menuStrings[2] = "Exit";
             for (int i = 0; i < menuSize.Length; i++)
                 menuSize[i] = 0.0f;
             //menuSize = 1.2f;
@@ -146,7 +147,7 @@ namespace ggj14.levels
             {
                 if(i == menuSelection)
                     //sb.DrawString(menuFont, menuStrings[i], new Vector2(menuTopLeftPos.X, menuTopLeftPos.Y + i * 40), Color.Yellow);
-                    sb.DrawString(menuFont, menuStrings[i], new Vector2(menuTopLeftPos.X, menuTopLeftPos.Y + i * 40), Color.Yellow, 0.0f, new Vector2(0.0f, 0.0f), menuSize[i], SpriteEffects.None, 0.0f);
+                    sb.DrawString(menuFont, menuStrings[i], new Vector2(menuTopLeftPos.X, menuTopLeftPos.Y + i * 40), Color.Purple, 0.0f, new Vector2(0.0f, 0.0f), menuSize[i], SpriteEffects.None, 0.0f);
                     
                 else
                     sb.DrawString(menuFont, menuStrings[i], new Vector2(menuTopLeftPos.X, menuTopLeftPos.Y + i * 40), Color.White, 0.0f, new Vector2(0.0f, 0.0f), menuSize[i], SpriteEffects.None, 0.0f);
