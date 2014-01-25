@@ -99,11 +99,19 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="xmlContent\entityDefinitions.xml">
-      <Name>entityDefinitions</Name>
+    <None Include="xmlContent\gameObjectDefinition.xml">
+      <Name>gameObjectDefinition</Name>
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="xmlContent\entityDefinitions.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Name>entityDefinitions</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

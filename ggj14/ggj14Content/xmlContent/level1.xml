@@ -4,7 +4,7 @@
     <backgroundtexture>Content\textures\BedroomBGLayer0</backgroundtexture>
     <backgroundtexture>Content\textures\BedroomBGLayer1</backgroundtexture>
     <gameobject>
-      <texture>Content\textures\MouseTrap</texture>
+      <type>mousetrap</type>
       <positionx>100</positionx>
       <positiony>100</positiony>
       <scale>1</scale>

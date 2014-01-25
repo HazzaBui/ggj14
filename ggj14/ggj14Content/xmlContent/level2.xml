@@ -4,21 +4,19 @@
     <backgroundtexture>Content\textures\BedroomBGLayer0</backgroundtexture>
     <backgroundtexture>Content\textures\BedroomBGLayer1</backgroundtexture>
     <gameobject>
-      <texture>Content\textures\MouseTrap</texture>
+      <type>mousetrap</type>
       <positionx>100</positionx>
       <positiony>100</positiony>
       <scale>1</scale>
     </gameobject>
     <entity>
       <type>boy</type>
-      <texture>Content\textures\boy</texture>
       <positionx>10</positionx>
       <positiony>20</positiony>
       <scale>1</scale>
     </entity>
     <entity>
       <type>boy</type>
-      <texture>Content\textures\boy</texture>
       <positionx>50</positionx>
       <positiony>40</positiony>
       <scale>1</scale>

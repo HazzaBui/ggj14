@@ -51,6 +51,7 @@ namespace ggj14
         {
             //Intialise entity definitions
             helpers.classLoading.loadEntityDefinitions("Content\\xmlContent\\entityDefinitions.xml");
+            helpers.classLoading.loadGameObjectDefinitions("Content\\xmlContent\\gameObjectDefinition.xml");
 
             //Read player input xml file
             while (reader.Read())

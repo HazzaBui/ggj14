@@ -59,4 +59,13 @@ namespace ggj14.helpers
         public entityDefinition(string id, string text, string isound, string ssound, string bsound)
         { identifier = id; texture = text; interactionSound = isound; stepSound = ssound; backgroundMusic = bsound; }
     }
+
+    public struct gameObjectDefinition
+    {
+        public string identifier;
+        public string texture;
+        public string interactionSound;
+        public gameObjectDefinition(string id, string text, string sound)
+        { identifier = id; texture = text; interactionSound = sound; }
+    }
 }
