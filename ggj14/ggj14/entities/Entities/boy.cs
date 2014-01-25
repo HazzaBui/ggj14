@@ -79,12 +79,19 @@ namespace ggj14.entities.Entities
             base.Draw(spriteBatch);
         }
 
-        public boy(Texture2D inTex, Vector2 inPos) : base (inTex, inPos)
+        public boy(Vector2 inPos) : base (inPos)
         {
-            this.texture = inTex;
             this.position = inPos;
             this.centre = new Vector2((this.position.X + texture.Width) / 2, (this.position.Y + texture.Height) / 2);
             this.facingLeft = false;
+            int frameWidth = 64;
+            int frameHeight = 64;
+
+            Rectangle sourceRect = new Rectangle(0, 0, frameWidth, frameHeight);
+            for (int i = 0; i < 3; i++)
+            {
+                //animationFrames[i] = texture.GetData<Texture2D>(1, sourceRect, texture, 0, 3);
+            }
         }
     }
 }

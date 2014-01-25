@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
 
 namespace ggj14.entities
 {
@@ -16,6 +17,7 @@ namespace ggj14.entities
         protected bool facingLeft;
         protected bool isActivePlayer;
         protected bool currentlyColliding;
+        protected Texture2D[] animationFrames;
 
         public Vector2 getVelocity()
         {
@@ -77,15 +79,19 @@ namespace ggj14.entities
             currentlyColliding = inIsColl;
         }
 
-        public Entity(Texture2D inTex, Vector2 inPos)
+        public Entity(Vector2 inPos)
         {
             velocity = Vector2.Zero;
             facingLeft = false;
-            texture = inTex;
             position = inPos;
             isActivePlayer = false;
             currentlyColliding = false;
             centre = new Vector2((position.X + texture.Width) / 2, (position.Y + texture.Height) / 2);
+        }
+
+        public void LoadContent(ContentManager cm, string texString)
+        {
+            texture = cm.Load<Texture2D>(texString);
         }
 
         public virtual void Update(Entity[] entityList, gameObject[] objectList, int objPosition)
