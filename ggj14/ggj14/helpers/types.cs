@@ -19,4 +19,13 @@ namespace ggj14.helpers
         public bool exitLevel;
     }
 
+    struct playerControl
+    {
+        bool up;
+        bool down;
+        bool left;
+        bool right;
+        bool use;
+    }
+
 }
