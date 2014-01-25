@@ -109,7 +109,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="entities\Entities\Bird.cs" />
     <Compile Include="entities\Entities\boy.cs" />
+    <Compile Include="entities\Entities\Cat.cs" />
+    <Compile Include="entities\Entities\Man.cs" />
+    <Compile Include="entities\Entities\Moth.cs" />
+    <Compile Include="entities\Entities\Mouse.cs" />
+    <Compile Include="entities\Entities\Spider.cs" />
     <Compile Include="entities\Entity.cs" />
     <Compile Include="entities\gameObject.cs" />
     <Compile Include="helpers\classLoading.cs" />

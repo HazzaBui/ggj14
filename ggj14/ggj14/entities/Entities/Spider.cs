@@ -8,7 +8,7 @@ using ggj14.helpers;
 
 namespace ggj14.entities.Entities
 {
-    public class boy : Entity
+    public class Spider : Entity
     {
         public override void Update(Entity[] entityList, gameObject[] objectList, int entPosition, playerControl controls)
         {
@@ -19,7 +19,7 @@ namespace ggj14.entities.Entities
             int cOC = 0;
 
             this.velocity.Y += gravity;
-            for(int i = 0; i < entityList.Length; i++) 
+            for (int i = 0; i < entityList.Length; i++)
             {
                 Color[] entity1TextureData = new Color[64 * 64];
                 this.texture.GetData(0, new Rectangle(0, 0, 64, 64), entity1TextureData, 0, 64 * 64);
@@ -47,12 +47,14 @@ namespace ggj14.entities.Entities
 
             for (int i = 0; i < objectList.Length; i++)
             {
+                /*Color[] entity1TextureData = new Color[this.texture.Width * this.texture.Height];
+                this.texture.GetData(entity1TextureData);*/
                 Color[] entity1TextureData = new Color[64 * 64];
                 this.texture.GetData(0, new Rectangle(0, 0, 64, 64), entity1TextureData, 0, 64 * 64);
                 Color[] entity2TextureData = new Color[objectList[i].getTexture().Width * objectList[i].getTexture().Height];
                 objectList[i].getTexture().GetData(entity2TextureData);
                 Vector2 size1, size2;
-                size1 = new Vector2(this.texture.Width / numOfFrames, this.texture.Height);
+                size1 = new Vector2(this.texture.Width / 2, this.texture.Height);
                 size2 = new Vector2(objectList[i].getTexture().Width, objectList[i].getTexture().Height);
 
                 bool colliding = checkCollision(this.position, objectList[i].getPosition(), size1, size2, entity1TextureData, entity2TextureData);
@@ -64,9 +66,9 @@ namespace ggj14.entities.Entities
 
             if (this.isActivePlayer)
             {
-                /*if(controls.up)
-                    this.velocity.Y -= 0.25f;
-                if(controls.down)
+                if(controls.up)
+                    this.velocity.Y -= 30.0f;
+                /*if(controls.down)
                     this.velocity.Y += 0.25f;*/
                 if (controls.left)
                 {
@@ -74,7 +76,6 @@ namespace ggj14.entities.Entities
                     {
                         this.facingLeft = true;
                         frameCount = 0;
-                        //scale += 0.05f;
                     }
                     frameCount++;
                     this.velocity.X -= speed;
@@ -85,7 +86,6 @@ namespace ggj14.entities.Entities
                     {
                         this.facingLeft = false;
                         frameCount = 0;
-                        //scale += 0.05f;
                     }
                     frameCount++;
                     this.velocity.X += speed;
@@ -123,16 +123,16 @@ namespace ggj14.entities.Entities
                     }
                 }
             }
-            if (this.position.Y > (336 - (this.texture.Height * (scale - 1))))
+            if (this.position.Y > 336)
             {
-                this.position.Y = (336 - (this.texture.Height * (scale - 1)));
+                this.position.Y = 336;
                 this.velocity.Y = 0;
 
             }
-            if (this.position.X < -20 + (this.texture.Width * (scale - 1)))
+            if (this.position.X < -20)
             {
                 this.velocity.X = 0;
-                this.position.X = -20 + (this.texture.Width * (scale - 1));
+                this.position.X = -20;
             }
             if (this.position.X > 734)
             {
@@ -141,29 +141,28 @@ namespace ggj14.entities.Entities
             }
             this.position += this.velocity;
             this.velocity *= 0.9f;
-            //base.Update(entityList, objectList, entPosition, controls);
         }
 
         public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
         {
             if (!facingLeft)
-                spriteBatch.Draw(texture, this.position, textRect, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, 0);
+                spriteBatch.Draw(texture, position, textRect, Color.White);
             else
-                spriteBatch.Draw(texture, this.position, textRect, Color.White, 0, Vector2.Zero, scale, SpriteEffects.FlipHorizontally, 0);
+                spriteBatch.Draw(texture, this.position, textRect, Color.White, 0, Vector2.Zero, 1, SpriteEffects.FlipHorizontally, 0);
         }
 
-        public boy(Vector2 inPos, string inTexString) : base (inPos, inTexString)
+        public Spider(Vector2 inPos, string inTexString)
+            : base(inPos, inTexString)
         {
             this.position = inPos;
-            //this.centre = new Vector2((this.position.X + texture.Width) / 2, (this.position.Y + texture.Height) / 2);
             this.facingLeft = false;
             this.isActivePlayer = true;
             int frameWidth = 64;
             int frameHeight = 64;
             frameCount = 0;
-            numOfFrames = 4;
-            speed = 0.25f;
-            gravity = 1.0f;
+            numOfFrames = 2;
+            speed = 0.8f;
+            gravity = 0.2f;
 
             textRect = new Rectangle(0, 0, frameWidth, frameHeight);
         }

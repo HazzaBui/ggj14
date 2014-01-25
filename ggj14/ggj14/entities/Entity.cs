@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Audio;
 using ggj14.helpers;
 
 namespace ggj14.entities
@@ -14,14 +15,16 @@ namespace ggj14.entities
         protected Texture2D texture;
         protected Vector2 position;
         protected Vector2 velocity;
-       // protected Vector2 centre;
         protected string texString;
         protected Rectangle textRect;
         protected bool facingLeft;
         protected bool isActivePlayer;
         protected bool currentlyColliding;
-        protected Texture2D[] animationFrames;
+        protected int numOfFrames;
+        protected float gravity;
+        protected float speed;
         protected double frameCount;
+        protected float scale = 1.0f;
 
         public Vector2 getVelocity()
         {
@@ -37,11 +40,6 @@ namespace ggj14.entities
         {
             return texture;
         }
-
-      /*  public Vector2 getCentre()
-        {
-            return centre;
-        }*/
 
         public bool getIsActive()
         {
@@ -68,11 +66,6 @@ namespace ggj14.entities
             texture = inTex;
         }
 
-        /*public void setCentre(Vector2 inCentre)
-        {
-            centre = inCentre;
-        }*/
-
         public void setIsActive(bool inIsActive)
         {
             isActivePlayer = inIsActive;
@@ -91,7 +84,6 @@ namespace ggj14.entities
             position = inPos;
             isActivePlayer = false;
             currentlyColliding = false;
-            //centre = new Vector2((position.X + texture.Width) / 2, (position.Y + texture.Height) / 2);
         }
 
         public void LoadContent(ContentManager cm)
@@ -101,12 +93,12 @@ namespace ggj14.entities
 
         public virtual void Update(Entity[] entityList, gameObject[] objectList, int listPosition, playerControl controls)
         {
-            //this.centre = new Vector2((position.X + texture.Width) / 2, (position.Y + texture.Height) / 2);
+            
         }
 
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            //spriteBatch.Draw(texture, centre, null, Color.White);
+           
         }
 
         protected bool checkCollision(Vector2 entityPos1, Vector2 entityPos2, Vector2 entitySize1, Vector2 entitySize2, Color[] color1, Color[] color2)
