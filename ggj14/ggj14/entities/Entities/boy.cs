@@ -82,7 +82,7 @@ namespace ggj14.entities.Entities
         public boy(Vector2 inPos, string inTexString) : base (inPos, inTexString)
         {
             this.position = inPos;
-            this.centre = new Vector2((this.position.X + texture.Width) / 2, (this.position.Y + texture.Height) / 2);
+            //this.centre = new Vector2((this.position.X + texture.Width) / 2, (this.position.Y + texture.Height) / 2);
             this.facingLeft = false;
             int frameWidth = 64;
             int frameHeight = 64;

@@ -13,7 +13,7 @@ namespace ggj14.entities
         protected Texture2D texture;
         protected Vector2 position;
         protected Vector2 velocity;
-        protected Vector2 centre;
+       // protected Vector2 centre;
         protected string texString;
         protected bool facingLeft;
         protected bool isActivePlayer;
@@ -35,10 +35,10 @@ namespace ggj14.entities
             return texture;
         }
 
-        public Vector2 getCentre()
+      /*  public Vector2 getCentre()
         {
             return centre;
-        }
+        }*/
 
         public bool getIsActive()
         {
@@ -65,10 +65,10 @@ namespace ggj14.entities
             texture = inTex;
         }
 
-        public void setCentre(Vector2 inCentre)
+        /*public void setCentre(Vector2 inCentre)
         {
             centre = inCentre;
-        }
+        }*/
 
         public void setIsActive(bool inIsActive)
         {
@@ -88,7 +88,7 @@ namespace ggj14.entities
             position = inPos;
             isActivePlayer = false;
             currentlyColliding = false;
-            centre = new Vector2((position.X + texture.Width) / 2, (position.Y + texture.Height) / 2);
+            //centre = new Vector2((position.X + texture.Width) / 2, (position.Y + texture.Height) / 2);
         }
 
         public void LoadContent(ContentManager cm)
