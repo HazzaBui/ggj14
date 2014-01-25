@@ -46,12 +46,14 @@ namespace ggj14.entities.Entities
 
             for (int i = 0; i < objectList.Length; i++)
             {
-                Color[] entity1TextureData = new Color[this.texture.Width * this.texture.Height];
-                this.texture.GetData(entity1TextureData);
+                /*Color[] entity1TextureData = new Color[this.texture.Width * this.texture.Height];
+                this.texture.GetData(entity1TextureData);*/
+                Color[] entity1TextureData = new Color[64 * 64];
+                this.texture.GetData(0, new Rectangle(0, 0, 64, 64), entity1TextureData, 0, 64 * 64);
                 Color[] entity2TextureData = new Color[objectList[i].getTexture().Width * objectList[i].getTexture().Height];
                 objectList[i].getTexture().GetData(entity2TextureData);
                 Vector2 size1, size2;
-                size1 = new Vector2(this.texture.Width, this.texture.Height);
+                size1 = new Vector2(this.texture.Width / 4, this.texture.Height);
                 size2 = new Vector2(objectList[i].getTexture().Width, objectList[i].getTexture().Height);
 
                 bool colliding = checkCollision(this.position, objectList[i].getPosition(), size1, size2, entity1TextureData, entity2TextureData);
@@ -92,16 +94,24 @@ namespace ggj14.entities.Entities
                     {
                         this.velocity.X = 0;
                     }
+                    if ((gObj.getPosition().Y < this.position.Y) && this.velocity.Y < 0 && (gObj.getInteractive() == false))
+                    {
+                        this.velocity.Y = 0;
+                    }
+                    if ((gObj.getPosition().Y > this.position.Y) && this.velocity.Y > 0 && (gObj.getInteractive() == false))
+                    {
+                        this.velocity.Y = 0;
+                    }
                 }
             }
             this.position += this.velocity;
+            this.velocity *= 0.9f;
             //base.Update(entityList, objectList, entPosition, controls);
         }
 
         public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(texture, position, null, Color.White);
-           
+            spriteBatch.Draw(texture, position, textRect, Color.White);           
         }
 
         public boy(Vector2 inPos, string inTexString) : base (inPos, inTexString)
@@ -109,10 +119,11 @@ namespace ggj14.entities.Entities
             this.position = inPos;
             //this.centre = new Vector2((this.position.X + texture.Width) / 2, (this.position.Y + texture.Height) / 2);
             this.facingLeft = false;
+            this.isActivePlayer = true;
             int frameWidth = 64;
             int frameHeight = 64;
 
-            textRect = new Rectangle(0, 0, frameWidth / 4, frameHeight / 4);
+            textRect = new Rectangle(0, 0, frameWidth, frameHeight);
         }
     }
 }
