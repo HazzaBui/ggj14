@@ -23,6 +23,7 @@ namespace ggj14
         ggj14.helpers.levelReturn levelState;
         ggj14.helpers.playerControl player1, player2;
         ggj14.helpers.playerKeys player1Keys, player2Keys;
+        ggj14.helpers.playerControl player1Last, player2Last;
         XmlTextReader reader;
         bool levelFadeOut;
         bool levelFadeIn;
@@ -44,6 +45,8 @@ namespace ggj14
             player2 = new ggj14.helpers.playerControl();
             player1Keys = new ggj14.helpers.playerKeys();
             player2Keys = new ggj14.helpers.playerKeys();
+            player1Last = new ggj14.helpers.playerControl(false);
+            player2Last = new ggj14.helpers.playerControl(false);
             reader = new XmlTextReader("Content\\xmlContent\\playerControls.xml");
         }
 
@@ -204,6 +207,29 @@ namespace ggj14
                     }
                 }
             }
+
+            //Reset up/use to false if they were true last frame
+            if (player1.up)
+            {
+                if (player1Last.up)
+                {
+                    player1.up = false;
+                }
+                player1Last.up = true;
+            }
+            else
+                player1Last.up = false;
+
+            if (player1.use)
+            {
+                if (player1Last.use)
+                {
+                    player1.use = false;
+                }
+                player1Last.use = true;
+            }
+            else
+                player1Last.use = false;
 
 
 
