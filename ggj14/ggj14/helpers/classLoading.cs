@@ -25,10 +25,10 @@ namespace ggj14.helpers
             return null;
         }
 
-        public static entities.gameObject loadGameObject(string texture, int posx, int posy)
+        public static entities.gameObject loadGameObject(string texture, int posx, int posy, string type)
         {
 
-            return new entities.gameObject(texture, new Microsoft.Xna.Framework.Vector2(posx, posy));
+            return new entities.gameObject(texture, new Microsoft.Xna.Framework.Vector2(posx, posy), type);
         }
 
         public static void loadEntityDefinitions(string file)

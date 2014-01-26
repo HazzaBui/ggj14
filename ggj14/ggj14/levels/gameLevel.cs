@@ -195,7 +195,7 @@ namespace ggj14.levels
                                 }
 
                                 //create go
-                                gameObjects.Add(helpers.classLoading.loadGameObject(texture, posx, posy));
+                                gameObjects.Add(helpers.classLoading.loadGameObject(texture, posx, posy, type));
                             }
                             break;
                             case "entity":
