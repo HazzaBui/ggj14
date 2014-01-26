@@ -26,6 +26,9 @@ namespace ggj14.entities
         protected double frameCount;
         protected float scale = 1.0f;
         protected string classType;
+        protected string audioString;
+        protected SoundEffect audioTrack;
+        protected SoundEffectInstance audioTrackInstance;
 
         public string getClassType()
         {
@@ -86,9 +89,10 @@ namespace ggj14.entities
             currentlyColliding = inIsColl;
         }
 
-        public Entity(Vector2 inPos, string inTexString)
+        public Entity(Vector2 inPos, string inTexString, string inAudioString)
         {
             texString = inTexString;
+            audioString = inAudioString;
             velocity = Vector2.Zero;
             facingLeft = false;
             position = inPos;
@@ -99,6 +103,8 @@ namespace ggj14.entities
         public void LoadContent(ContentManager cm)
         {
             texture = cm.Load<Texture2D>(texString);
+            audioTrack = cm.Load<SoundEffect>(audioString);
+            audioTrackInstance = audioTrack.CreateInstance();
         }
 
         public virtual void Update(Entity[] entityList, gameObject[] objectList, int listPosition, playerControl controls)

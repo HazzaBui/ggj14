@@ -20,4 +20,9 @@
     <texture>Content\textures\Nut</texture>
     <interactivesound>Content\sounds\</interactivesound>
   </gameobject>
+  <gameobject>
+    <objectname>door</objectname>
+    <texture>Content\textures\Door</texture>
+    <interactivesound>Content\sounds\</interactivesound>
+  </gameobject>
 </gameobjects>

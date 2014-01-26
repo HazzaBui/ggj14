@@ -269,7 +269,7 @@ namespace ggj14.levels
                                     ssound = helpers.classLoading.entitiyDefinitions.ElementAt(entDefinition).stepSound;
                                     bsound = helpers.classLoading.entitiyDefinitions.ElementAt(entDefinition).backgroundMusic;
                                 }
-                                entities.Add(helpers.classLoading.loadEntity(texture, posx, posy, objType));
+                                entities.Add(helpers.classLoading.loadEntity(texture, bsound, posx, posy, objType));
                             }
                             break;
                                 //Add additional items to load here

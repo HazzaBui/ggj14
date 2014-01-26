@@ -109,6 +109,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="entities\door.cs" />
     <Compile Include="entities\Entities\Bird.cs" />
     <Compile Include="entities\Entities\boy.cs" />
     <Compile Include="entities\Entities\Cat.cs" />

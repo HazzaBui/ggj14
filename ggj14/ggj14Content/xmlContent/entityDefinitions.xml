@@ -5,41 +5,41 @@
     <texture>Content\textures\boy</texture>
     <interactivesound>Content\sounds\</interactivesound>
     <stepsound></stepsound>
-    <backgroundmusic></backgroundmusic>
+    <backgroundmusic>Content\sounds\child_loop</backgroundmusic>
   </entity>
   <entity>
     <entityname>spider</entityname>
     <texture>Content\textures\Spider</texture>
     <interactivesound>Content\sounds\</interactivesound>
     <stepsound></stepsound>
-    <backgroundmusic></backgroundmusic>
+    <backgroundmusic>Content\sounds\spider_loop</backgroundmusic>
   </entity>
   <entity>
     <entityname>moth</entityname>
     <texture>Content\textures\Moth</texture>
     <interactivesound>Content\sounds\</interactivesound>
     <stepsound></stepsound>
-    <backgroundmusic></backgroundmusic>
+    <backgroundmusic>Content\sounds\moth_loop</backgroundmusic>
   </entity>
   <entity>
     <entityname>cat</entityname>
     <texture>Content\textures\Cat</texture>
     <interactivesound>Content\sounds\</interactivesound>
     <stepsound></stepsound>
-    <backgroundmusic></backgroundmusic>
+    <backgroundmusic>Content\sounds\cat_loop</backgroundmusic>
   </entity>
   <entity>
     <entityname>bird</entityname>
     <texture>Content\textures\Bird</texture>
     <interactivesound>Content\sounds\</interactivesound>
     <stepsound></stepsound>
-    <backgroundmusic></backgroundmusic>
+    <backgroundmusic>Content\sounds\bird_loop</backgroundmusic>
   </entity>
   <entity>
     <entityname>mouse</entityname>
     <texture>Content\textures\Mouse</texture>
     <interactivesound>Content\sounds\</interactivesound>
     <stepsound></stepsound>
-    <backgroundmusic></backgroundmusic>
+    <backgroundmusic>Content\sounds\mouse_loop</backgroundmusic>
   </entity>
 </entities>

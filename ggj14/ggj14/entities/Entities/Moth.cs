@@ -92,6 +92,17 @@ namespace ggj14.entities.Entities
                 }
                 if (controls.use)
                 {
+                    bool breakOut = false;
+                    foreach (gameObject cObj in collidingObjects)
+                    {
+                        if (cObj != null)
+                        {
+                            if (cObj.getObjectType() == "door")
+                            {
+
+                            }
+                        }
+                    }
                     foreach (Entity cEnt in collidingEntities)
                     {
                         if (cEnt != null)
@@ -102,6 +113,7 @@ namespace ggj14.entities.Entities
                                 {
                                     cEnt.setIsActive(true);
                                     this.setIsActive(false);
+                                    this.setVelocity(Vector2.Zero);
                                     helpers.levelPersistence.ChangedEntityThisFrame = true;
                                 }
                                 break;
@@ -156,6 +168,10 @@ namespace ggj14.entities.Entities
             }
             this.position += this.velocity;
             this.velocity *= 0.9f;
+            if (audioTrackInstance.State != Microsoft.Xna.Framework.Audio.SoundState.Playing && this.isActivePlayer)
+                audioTrackInstance.Play();
+            else
+                audioTrackInstance.Pause();
             base.Update(entityList, objectList, entPosition, controls);
         }
 
@@ -189,9 +205,10 @@ namespace ggj14.entities.Entities
                 spriteBatch.Draw(texture, this.position, textRect, Color.White, 0, Vector2.Zero, scale, SpriteEffects.FlipHorizontally, 0);
         }
 
-        public Moth(Vector2 inPos, string inTexString)
-            : base(inPos, inTexString)
+        public Moth(Vector2 inPos, string inTexString, string inAudioString)
+            : base(inPos, inTexString, inAudioString)
         {
+            this.audioString = inAudioString;
             this.position = inPos;
             //this.centre = new Vector2((this.position.X + texture.Width) / 2, (this.position.Y + texture.Height) / 2);
             this.facingLeft = false;

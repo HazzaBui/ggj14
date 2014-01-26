@@ -12,7 +12,7 @@ namespace ggj14.entities
     public class gameObject
     {
         protected Texture2D texture;
-        string textureString;
+        protected string textureString;
         protected Vector2 position;
         protected Vector2 velocity;
         protected bool interactive;

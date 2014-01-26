@@ -104,6 +104,7 @@ namespace ggj14.entities.Entities
                                 {
                                     cEnt.setIsActive(true);
                                     this.setIsActive(false);
+                                    this.setVelocity(Vector2.Zero);
                                     helpers.levelPersistence.ChangedEntityThisFrame = true;
                                 }
                                 break;
@@ -158,6 +159,10 @@ namespace ggj14.entities.Entities
             }
             this.position += this.velocity;
             this.velocity *= 0.9f;
+            if (audioTrackInstance.State != Microsoft.Xna.Framework.Audio.SoundState.Playing && this.isActivePlayer)
+                audioTrackInstance.Play();
+            else
+                audioTrackInstance.Pause();
         }
 
         public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, GraphicsDevice device)
@@ -190,9 +195,10 @@ namespace ggj14.entities.Entities
                 spriteBatch.Draw(texture, this.position, textRect, Color.White, 0, Vector2.Zero, scale, SpriteEffects.FlipHorizontally, 0);
         }
 
-        public Spider(Vector2 inPos, string inTexString)
-            : base(inPos, inTexString)
+        public Spider(Vector2 inPos, string inTexString, string inAudioString)
+            : base(inPos, inTexString, inAudioString)
         {
+            this.audioString = inAudioString;
             this.position = inPos;
             this.facingLeft = false;
             this.isActivePlayer = true;
