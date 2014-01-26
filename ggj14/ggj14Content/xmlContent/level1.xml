@@ -167,31 +167,25 @@
       <gameobject>
         <type>key</type>
         <positionx>10</positionx>
-        <positiony>100</positiony>
-        <scale>1</scale>
-      </gameobject>
-      <gameobject>
-        <type>door</type>
-        <positionx>10</positionx>
-        <positiony>200</positiony>
+        <positiony>310</positiony>
         <scale>1</scale>
       </gameobject>
       <entity>
         <type>mouse</type>
         <positionx>10</positionx>
-        <positiony>20</positiony>
+        <positiony>340</positiony>
         <scale>1</scale>
       </entity>
       <entity>
         <type>cat</type>
         <positionx>400</positionx>
-        <positiony>200</positiony>
+        <positiony>340</positiony>
         <scale>1</scale>
       </entity>
       <entity>
         <type>boy</type>
         <positionx>500</positionx>
-        <positiony>200</positiony>
+        <positiony>340</positiony>
         <scale>1</scale>
       </entity>
       <chapterwarp>
@@ -219,7 +213,7 @@
       <entity>
         <type>mouse</type>
         <positionx>10</positionx>
-        <positiony>20</positiony>
+        <positiony>340</positiony>
         <scale>1</scale>
       </entity>
       <entity>
