@@ -32,6 +32,10 @@ namespace ggj14.entities
             return classType;
         }
 
+        public double getFrameCount()
+        {
+            return numOfFrames;
+        }
         public Vector2 getVelocity()
         {
             return velocity;
@@ -102,7 +106,7 @@ namespace ggj14.entities
             
         }
 
-        public virtual void Draw(SpriteBatch spriteBatch)
+        public virtual void Draw(SpriteBatch spriteBatch, GraphicsDevice device)
         {
            
         }

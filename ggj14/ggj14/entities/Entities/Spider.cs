@@ -27,7 +27,7 @@ namespace ggj14.entities.Entities
                 entityList[i].getTexture().GetData(entity2TextureData);
                 Vector2 size1, size2;
                 size1 = new Vector2(this.texture.Width / numOfFrames, this.texture.Height);
-                size2 = new Vector2(entityList[i].getTexture().Width, entityList[i].getTexture().Height);
+                size2 = new Vector2((float)(entityList[i].getTexture().Width / entityList[i].getFrameCount()), entityList[i].getTexture().Height);
                 if (i != entPosition)
                 {
                     bool colliding = checkCollision(this.position, entityList[i].getPosition(), size1, size2, entity1TextureData, entity2TextureData);
@@ -41,8 +41,8 @@ namespace ggj14.entities.Entities
                         entityList[i].setCurrentlyColliding(false);
                     }
                 }
-                else
-                    entityList[i].setCurrentlyColliding(false);
+               // else
+                 //   entityList[i].setCurrentlyColliding(false);
             }
 
             for (int i = 0; i < objectList.Length; i++)
@@ -100,7 +100,19 @@ namespace ggj14.entities.Entities
                 }
                 if (controls.use)
                 {
-                    frameCount++;
+                    foreach (Entity cEnt in collidingEntities)
+                    {
+                        if (cEnt != null)
+                        {
+                            if (cEnt.getCurrentlyColliding() == true)
+                            {
+                                cEnt.setIsActive(true);
+                                this.setIsActive(false);
+                                controls.use = false;
+                                break;
+                            }
+                        }
+                    }
                 }
             }
             if (frameCount >= (10 * numOfFrames) || (!controls.right && !controls.left))
@@ -151,12 +163,34 @@ namespace ggj14.entities.Entities
             this.velocity *= 0.9f;
         }
 
-        public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
+        public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, GraphicsDevice device)
         {
+            if (currentlyColliding && !isActivePlayer)
+            {
+                Color[] oldColArray = new Color[texture.Width * texture.Height];
+                texture.GetData(0, new Rectangle(0, 0, this.texture.Width, this.texture.Height), oldColArray, 0, oldColArray.Length);
+                for (int i = 0; i < texture.Width; i++)
+                {
+                    for (int j = 0; j < texture.Height; j++)
+                    {
+                        if (oldColArray[i + j * texture.Width] != Color.Transparent)
+                            oldColArray[i + j * texture.Width] = Color.White;
+                    }
+                }
+
+                Texture2D newText = new Texture2D(device, texture.Width, texture.Height);
+                newText.SetData<Color>(oldColArray);
+
+                if (!facingLeft)
+                    spriteBatch.Draw(newText, new Vector2(position.X - texture.Width / (4 * numOfFrames), position.Y - texture.Height / 4), textRect, Color.Yellow, 0.0f, Vector2.Zero, 1.5f, SpriteEffects.None, 0.8f);
+                else
+                    spriteBatch.Draw(newText, new Vector2(position.X - texture.Width / (4 * numOfFrames), position.Y - texture.Height / 4), textRect, Color.Yellow, 0.0f, Vector2.Zero, 1.5f, SpriteEffects.None, 0.8f);
+            }
+
             if (!facingLeft)
-                spriteBatch.Draw(texture, position, textRect, Color.White);
+                spriteBatch.Draw(texture, this.position, textRect, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, 0);
             else
-                spriteBatch.Draw(texture, this.position, textRect, Color.White, 0, Vector2.Zero, 1, SpriteEffects.FlipHorizontally, 0);
+                spriteBatch.Draw(texture, this.position, textRect, Color.White, 0, Vector2.Zero, scale, SpriteEffects.FlipHorizontally, 0);
         }
 
         public Spider(Vector2 inPos, string inTexString)

@@ -106,7 +106,7 @@ namespace ggj14.levels
             }
             foreach (ggj14.entities.Entity e in entities)
             {
-                e.Draw(sb);
+                e.Draw(sb, graphics.GraphicsDevice);
             }
             
         }
