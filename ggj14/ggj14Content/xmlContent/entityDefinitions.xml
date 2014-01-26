@@ -7,4 +7,11 @@
     <stepsound></stepsound>
     <backgroundmusic></backgroundmusic>
   </entity>
+  <entity>
+    <entityname>spider</entityname>
+    <texture>Content\textures\Spider</texture>
+    <interactivesound>Content\sounds\</interactivesound>
+    <stepsound></stepsound>
+    <backgroundmusic></backgroundmusic>
+  </entity>
 </entities>

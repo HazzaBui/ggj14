@@ -9,8 +9,26 @@
       <positiony>100</positiony>
       <scale>1</scale>
     </gameobject>
+    <gameobject>
+      <type>key</type>
+      <positionx>200</positionx>
+      <positiony>200</positiony>
+      <scale>1</scale>
+    </gameobject>
+    <gameobject>
+      <type>nut</type>
+      <positionx>300</positionx>
+      <positiony>350</positiony>
+      <scale>1</scale>
+    </gameobject>
+    <gameobject>
+      <type>ball</type>
+      <positionx>100</positionx>
+      <positiony>200</positiony>
+      <scale>1</scale>
+    </gameobject>
     <entity>
-      <type>boy</type>
+      <type>spider</type>
       <positionx>10</positionx>
       <positiony>20</positiony>
       <scale>1</scale>
@@ -20,5 +38,5 @@
       <warpposy>300</warpposy>
       <chapterto>chapter2</chapterto>
     </chapterwarp>
-  </chapter1>
+  </chapter1> 
  </level1>

@@ -5,4 +5,19 @@
     <texture>Content\textures\MouseTrap</texture>
     <interactivesound>Content\sounds\</interactivesound>
   </gameobject>
+  <gameobject>
+    <objectname>ball</objectname>
+    <texture>Content\textures\Ball</texture>
+    <interactivesound>Content\sounds\</interactivesound>
+  </gameobject>
+  <gameobject>
+    <objectname>key</objectname>
+    <texture>Content\textures\Key</texture>
+    <interactivesound>Content\sounds\</interactivesound>
+  </gameobject>
+  <gameobject>
+    <objectname>nut</objectname>
+    <texture>Content\textures\Nut</texture>
+    <interactivesound>Content\sounds\</interactivesound>
+  </gameobject>
 </gameobjects>
