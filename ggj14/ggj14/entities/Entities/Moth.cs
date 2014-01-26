@@ -59,6 +59,11 @@ namespace ggj14.entities.Entities
                 if (colliding)
                 {
                     collidingObjects[cOC] = objectList[i];
+                    objectList[i].setIsGlowing(true);
+                }
+                else
+                {
+                    objectList[i].setIsGlowing(false);
                 }
             }
 

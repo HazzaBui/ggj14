@@ -59,14 +59,19 @@ namespace ggj14.entities.Entities
                 if (colliding)
                 {
                     collidingObjects[cOC] = objectList[i];
+                    objectList[i].setIsGlowing(true);
+                }
+                else
+                {
+                    objectList[i].setIsGlowing(false);
                 }
             }
 
             if (this.isActivePlayer)
             {
-                /*if(controls.up)
-                    this.velocity.Y -= 0.25f;
-                if(controls.down)
+                if(controls.up)
+                    this.velocity.Y -= 1.2f;
+                /*if(controls.down)
                     this.velocity.Y += 0.25f;*/
                 if (controls.left)
                 {
