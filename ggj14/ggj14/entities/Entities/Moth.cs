@@ -113,7 +113,9 @@ namespace ggj14.entities.Entities
                     {
                         if (d.getIsGlowing())
                         {
+
                             d.setHasBeenUsed(true);
+                            this.audioTrackInstance.Pause();
                             break;
                         }
                     }

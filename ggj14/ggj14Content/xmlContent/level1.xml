@@ -139,7 +139,7 @@
       </entity>
       <entity>
         <type>boy</type>
-        <positionx>500</positionx>
+        <positionx>600</positionx>
         <positiony>340</positiony>
         <scale>1</scale>
       </entity>
