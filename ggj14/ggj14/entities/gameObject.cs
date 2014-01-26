@@ -17,6 +17,12 @@ namespace ggj14.entities
         protected Vector2 velocity;
         protected bool interactive;
         protected string objectType;
+        protected bool isGlowing;
+
+        public void setIsGlowing(bool glow)
+        {
+            isGlowing = glow;
+        }
 
         public string getObjectType()
         {
@@ -80,8 +86,26 @@ namespace ggj14.entities
 
         }
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, GraphicsDevice device)
         {
+            if (isGlowing)
+            {
+                Color[] oldColArray = new Color[texture.Width * texture.Height];
+                texture.GetData(0, new Rectangle(0, 0, this.texture.Width, this.texture.Height), oldColArray, 0, oldColArray.Length);
+                for (int i = 0; i < texture.Width; i++)
+                {
+                    for (int j = 0; j < texture.Height; j++)
+                    {
+                        if (oldColArray[i + j * texture.Width] != Color.Transparent)
+                            oldColArray[i + j * texture.Width] = Color.White;
+                    }
+                }
+
+                Texture2D newText = new Texture2D(device, texture.Width, texture.Height);
+                newText.SetData<Color>(oldColArray);
+
+                spriteBatch.Draw(newText, new Vector2(position.X - texture.Width / 4, position.Y - texture.Height / 4), null, Color.Yellow, 0.0f, Vector2.Zero, 1.5f, SpriteEffects.None, 0.8f);
+            }
             spriteBatch.Draw(texture, position, null, Color.White);
         }
     }

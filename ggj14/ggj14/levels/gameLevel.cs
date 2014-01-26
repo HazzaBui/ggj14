@@ -87,7 +87,7 @@ namespace ggj14.levels
 
             foreach (ggj14.entities.gameObject g in gameObjects)
             {
-                g.Draw(sb);
+                g.Draw(sb, graphics.GraphicsDevice);
             }
             foreach (ggj14.entities.Entity e in entities)
             {
