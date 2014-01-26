@@ -47,6 +47,7 @@ namespace ggj14.levels
 
         public override void loadContent()
         {
+            entities.ElementAt(0).setIsActive(true);
             foreach (ggj14.entities.Entity e in entities)
             {
                 e.LoadContent(cm);

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<gameobjects>
+  <gameobject>
+    <objectname>mousetrap</objectname>
+    <texture>Content\textures\MouseTrap</texture>
+    <interactivesound>Content\sounds\</interactivesound>
+  </gameobject>
+  <gameobject>
+    <objectname>ball</objectname>
+    <texture>Content\textures\Ball</texture>
+    <interactivesound>Content\sounds\</interactivesound>
+  </gameobject>
+  <gameobject>
+    <objectname>key</objectname>
+    <texture>Content\textures\Key</texture>
+    <interactivesound>Content\sounds\</interactivesound>
+  </gameobject>
+  <gameobject>
+    <objectname>nut</objectname>
+    <texture>Content\textures\Nut</texture>
+    <interactivesound>Content\sounds\</interactivesound>
+  </gameobject>
+  <gameobject>
+    <objectname>door</objectname>
+    <texture>Content\textures\Door</texture>
+    <interactivesound>Content\sounds\</interactivesound>
+  </gameobject>
+</gameobjects>

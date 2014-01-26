@@ -10,6 +10,7 @@ namespace ggj14.entities.Entities
 {
     public class Mouse : Entity
     {
+
         public override void Update(Entity[] entityList, gameObject[] objectList, door[] doorList, int entPosition, playerControl controls)
         {
             Entity[] collidingEntities = new Entity[entityList.Length];
@@ -50,14 +51,10 @@ namespace ggj14.entities.Entities
                 size2 = new Vector2(objectList[i].getTexture().Width, objectList[i].getTexture().Height);
 
                 bool colliding = checkCollision(this.position, objectList[i].getPosition(), size1, size2, entity1TextureData, entity2TextureData);
-                if (colliding)
+                if (colliding && this.isActivePlayer)
                 {
                     collidingObjects[cOC] = objectList[i];
                     objectList[i].setIsGlowing(true);
-                }
-                else
-                {
-                    objectList[i].setIsGlowing(false);
                 }
             }
 
@@ -125,7 +122,7 @@ namespace ggj14.entities.Entities
                     {
                         if (cEnt != null)
                         {
-                            if (cEnt.getCurrentlyColliding() == true)
+                            if (cEnt.getCurrentlyColliding() == true && cEnt.canBeSeen)
                             {
                                 if (!helpers.levelPersistence.ChangedEntityThisFrame)
                                 {
@@ -191,12 +188,24 @@ namespace ggj14.entities.Entities
                 audioTrackInstance.Play();
             if(!this.isActivePlayer)
                 this.audioTrackInstance.Pause();
+            canBeSeen = false;
+            foreach (Entity e in entityList)
+            {
+                if (e.getIsActive())
+                {
+                    foreach (string s in e.viewableEntities)
+                    {
+                        if (s == classType)
+                            canBeSeen = true;
+                    }
+                }
+            }
             base.Update(entityList, objectList, doorList, entPosition, controls);
         }
 
         public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, GraphicsDevice device)
         {
-            if (currentlyColliding && !isActivePlayer)
+            if (currentlyColliding && !isActivePlayer && canBeSeen)
             {
                 Color[] oldColArray = new Color[texture.Width * texture.Height];
                 texture.GetData(0, new Rectangle(0, 0, this.texture.Width, this.texture.Height), oldColArray, 0, oldColArray.Length);
@@ -217,15 +226,21 @@ namespace ggj14.entities.Entities
                 else
                     spriteBatch.Draw(newText, new Vector2(position.X - texture.Width / (4 * numOfFrames), position.Y - texture.Height / 4), textRect, Color.Yellow, 0.0f, Vector2.Zero, 1.5f, SpriteEffects.FlipHorizontally, 0.8f);
             }
+            Color drawColour;
+            if (canBeSeen)
+                drawColour = Color.White;
+            else
+                drawColour = Color.Black;
+
             float depth = 0.5f;
             if (isActivePlayer)
             {
                 depth = 0.0f;
             }
-            if (!facingLeft)
-                spriteBatch.Draw(texture, this.position, textRect, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, depth);
+            if (facingLeft)
+                spriteBatch.Draw(texture, this.position, textRect, drawColour, 0, Vector2.Zero, scale, SpriteEffects.FlipHorizontally, depth);
             else
-                spriteBatch.Draw(texture, this.position, textRect, Color.White, 0, Vector2.Zero, scale, SpriteEffects.FlipHorizontally, depth);
+                spriteBatch.Draw(texture, this.position, textRect, drawColour, 0, Vector2.Zero, scale, SpriteEffects.None, depth);
 
         }
 
@@ -244,6 +259,10 @@ namespace ggj14.entities.Entities
             speed = 0.25f;
             gravity = 1.0f;
             classType = "Mouse";
+            viewableEntities = new List<string>();
+            viewableEntities.Add("Boy");
+            viewableEntities.Add("Cat");
+            viewableEntities.Add("Mouse");
 
             textRect = new Rectangle(0, 0, frameWidth, frameHeight);
         }

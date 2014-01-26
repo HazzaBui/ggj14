@@ -6,6 +6,11 @@
     <interactivesound>Content\sounds\</interactivesound>
   </gameobject>
   <gameobject>
+    <objectname>mousetrapused</objectname>
+    <texture>Content\textures\MouseTrapUsed</texture>
+    <interactivesound>Content\sounds\</interactivesound>
+  </gameobject>
+  <gameobject>
     <objectname>ball</objectname>
     <texture>Content\textures\Ball</texture>
     <interactivesound>Content\sounds\</interactivesound>
@@ -18,6 +23,11 @@
   <gameobject>
     <objectname>nut</objectname>
     <texture>Content\textures\Nut</texture>
+    <interactivesound>Content\sounds\</interactivesound>
+  </gameobject>
+  <gameobject>
+    <objectname>nutpacket</objectname>
+    <texture>Content\textures\BagOfNutz</texture>
     <interactivesound>Content\sounds\</interactivesound>
   </gameobject>
   <gameobject>

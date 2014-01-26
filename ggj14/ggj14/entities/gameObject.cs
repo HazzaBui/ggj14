@@ -18,6 +18,7 @@ namespace ggj14.entities
         protected bool interactive;
         protected string objectType;
         protected bool isGlowing;
+        protected float scale;
 
         public void setIsGlowing(bool glow)
         {
@@ -80,6 +81,7 @@ namespace ggj14.entities
             position = inPos;
             textureString = inTex;
             objectType = inObjectType;
+            scale = 1.0f;
         }
         public void Update()
         {
@@ -88,7 +90,7 @@ namespace ggj14.entities
 
         public void Draw(SpriteBatch spriteBatch, GraphicsDevice device)
         {
-            if (isGlowing)
+            if (isGlowing && scale != 2.0f)
             {
                 Color[] oldColArray = new Color[texture.Width * texture.Height];
                 texture.GetData(0, new Rectangle(0, 0, this.texture.Width, this.texture.Height), oldColArray, 0, oldColArray.Length);
@@ -105,8 +107,9 @@ namespace ggj14.entities
                 newText.SetData<Color>(oldColArray);
 
                 spriteBatch.Draw(newText, new Vector2(position.X - texture.Width / 4, position.Y - texture.Height / 4), null, Color.Yellow, 0.0f, Vector2.Zero, 1.5f, SpriteEffects.None, 0.8f);
+                isGlowing = false;
             }
-            spriteBatch.Draw(texture, position, null, Color.White);
+            spriteBatch.Draw(texture, position, null, Color.White, 0.0f, Vector2.Zero, scale, SpriteEffects.None, 0.9f);
         }
     }
 }

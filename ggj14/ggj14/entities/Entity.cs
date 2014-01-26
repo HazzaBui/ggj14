@@ -27,6 +27,8 @@ namespace ggj14.entities
         protected float scale = 1.0f;
         protected string classType;
         protected string audioString;
+        public List<string> viewableEntities;
+        public bool canBeSeen;
         protected SoundEffect audioTrack;
         protected SoundEffectInstance audioTrackInstance;
 

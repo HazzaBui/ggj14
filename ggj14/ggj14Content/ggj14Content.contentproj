@@ -62,8 +62,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="xmlContent\level1.xml">
-      <Name>level1</Name>
+    <None Include="xmlContent\level1.xml.old">
+      <Name>level1.xml</Name>
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -100,8 +100,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="xmlContent\gameObjectDefinition.xml">
-      <Name>gameObjectDefinition</Name>
+    <None Include="xmlContent\gameObjectDefinition.xml.old">
+      <Name>gameObjectDefinition.xml</Name>
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -214,6 +214,113 @@
     </Compile>
     <Compile Include="textures\KitchenCollision.bmp">
       <Name>KitchenCollision</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="xmlContent\level1.xml">
+      <Name>level1</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="xmlContent\gameObjectDefinition.xml">
+      <Name>gameObjectDefinition</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="textures\BagOfNutz.bmp">
+      <Name>BagOfNutz</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="textures\MouseTrapUsed.bmp">
+      <Name>MouseTrapUsed</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="textures\HallwayBGLayer0.bmp">
+      <Name>HallwayBGLayer0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="textures\HallwayBGLayer1.bmp">
+      <Name>HallwayBGLayer1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="textures\MouseholeBGLayer0.bmp">
+      <Name>MouseholeBGLayer0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="textures\MouseholeCollision.bmp">
+      <Name>MouseholeCollision</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="textures\KitchenDoor.bmp">
+      <Name>KitchenDoor</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="textures\HouseDoorBot.bmp">
+      <Name>HouseDoorBot</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="textures\HouseDoorMid.bmp">
+      <Name>HouseDoorMid</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="textures\HouseDoorTop.bmp">
+      <Name>HouseDoorTop</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="textures\DadKnockout.bmp">
+      <Name>DadKnockout</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="textures\Dadshout.bmp">
+      <Name>Dadshout</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="textures\DadSilhouette.bmp">
+      <Name>DadSilhouette</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="textures\LivingroomBGLayer0.bmp">
+      <Name>LivingroomBGLayer0</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="textures\LivingroomFGLayer0.bmp">
+      <Name>LivingroomFGLayer0</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>

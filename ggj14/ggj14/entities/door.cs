@@ -21,6 +21,7 @@ namespace ggj14.entities
             this.objectType = "door";
             this.chapterTo = inChapterTo;
             this.hasBeenUsed = false;
+            scale = 2.0f;
         }
 
         
