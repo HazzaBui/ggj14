@@ -101,9 +101,9 @@ namespace ggj14.entities.Entities
                 frameCount = 0;
             }
             textRect = new Rectangle(this.texture.Width / numOfFrames * (int)(frameCount / 10), 0, this.texture.Width / numOfFrames, this.texture.Height);
-            if (collidingObjects[0] != null)
+            foreach (gameObject gObj in collidingObjects)
             {
-                foreach (gameObject gObj in collidingObjects)
+                if (gObj != null)
                 {
                     if ((gObj.getPosition().X < this.position.X) && this.velocity.X < 0 && (gObj.getInteractive() == false))
                     {

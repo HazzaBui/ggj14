@@ -101,6 +101,7 @@ namespace ggj14.entities.Entities
                 frameCount = 0;
             }
             textRect = new Rectangle(this.texture.Width / numOfFrames * (int)(frameCount / 10), 0, this.texture.Width / numOfFrames, this.texture.Height);
+
             foreach (gameObject gObj in collidingObjects)
             {
                 if (gObj != null)

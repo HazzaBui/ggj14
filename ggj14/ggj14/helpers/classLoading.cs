@@ -18,7 +18,8 @@ namespace ggj14.helpers
             {
                 case "boy":
                     return new entities.Entities.boy(new Microsoft.Xna.Framework.Vector2(posx, posy), texture);
-
+                case "spider":
+                    return new entities.Entities.Spider(new Microsoft.Xna.Framework.Vector2(posx, posy), texture);
 
             }
 
