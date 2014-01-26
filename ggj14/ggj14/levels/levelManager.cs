@@ -271,6 +271,10 @@ namespace ggj14
             }
             else if (levelState.nextLevel != "" && levelState.nextLevel != null)
             {
+                if (levelState.transitionBetweenLevels)
+                {
+                    levelStack.Pop();
+                }
                 levelStack.Push(new levels.gameLevel(spriteBatch, contentManager));
                 levelStack.Peek().intialise("Content\\xmlContent\\" + levelState.nextLevel + ".xml", levelState.nextChapter, levelState.nextLevel);
                 levelStack.Peek().loadContent();
