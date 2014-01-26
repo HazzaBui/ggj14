@@ -11,23 +11,23 @@ namespace ggj14.helpers
         public static List<entityDefinition> entitiyDefinitions = new List<entityDefinition>();
         public static List<gameObjectDefinition> objectDefinitions = new List<gameObjectDefinition>();
 
-        public static entities.Entity loadEntity(string texture, int posx, int posy, string objectType)
+        public static entities.Entity loadEntity(string texture, string audio, int posx, int posy, string objectType)
         {
 
             switch (objectType)
             {
                 case "boy":
-                    return new entities.Entities.boy(new Microsoft.Xna.Framework.Vector2(posx, posy), texture);
+                    return new entities.Entities.boy(new Microsoft.Xna.Framework.Vector2(posx, posy), texture, audio);
                 case "spider":
-                    return new entities.Entities.Spider(new Microsoft.Xna.Framework.Vector2(posx, posy), texture);
+                    return new entities.Entities.Spider(new Microsoft.Xna.Framework.Vector2(posx, posy), texture, audio);
                 case "moth":
-                    return new entities.Entities.Moth(new Microsoft.Xna.Framework.Vector2(posx, posy), texture);
+                    return new entities.Entities.Moth(new Microsoft.Xna.Framework.Vector2(posx, posy), texture, audio);
                 case "bird":
-                    return new entities.Entities.Bird(new Microsoft.Xna.Framework.Vector2(posx, posy), texture);
+                    return new entities.Entities.Bird(new Microsoft.Xna.Framework.Vector2(posx, posy), texture, audio);
                 case "cat":
-                    return new entities.Entities.Cat(new Microsoft.Xna.Framework.Vector2(posx, posy), texture);
+                    return new entities.Entities.Cat(new Microsoft.Xna.Framework.Vector2(posx, posy), texture, audio);
                 case "mouse":
-                    return new entities.Entities.Mouse(new Microsoft.Xna.Framework.Vector2(posx, posy), texture);
+                    return new entities.Entities.Mouse(new Microsoft.Xna.Framework.Vector2(posx, posy), texture, audio);
 
             }
 
@@ -139,7 +139,7 @@ namespace ggj14.helpers
                         }
                         reader.Read();
                     }
-                    objectDefinitions.Add( new gameObjectDefinition(name, texture, interactivesound));
+                    objectDefinitions.Add(new gameObjectDefinition(name, texture, interactivesound));
                 }
             }
         }
