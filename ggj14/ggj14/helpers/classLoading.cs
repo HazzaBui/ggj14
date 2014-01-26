@@ -20,6 +20,14 @@ namespace ggj14.helpers
                     return new entities.Entities.boy(new Microsoft.Xna.Framework.Vector2(posx, posy), texture);
                 case "spider":
                     return new entities.Entities.Spider(new Microsoft.Xna.Framework.Vector2(posx, posy), texture);
+                case "moth":
+                    return new entities.Entities.Moth(new Microsoft.Xna.Framework.Vector2(posx, posy), texture);
+                case "bird":
+                    return new entities.Entities.Bird(new Microsoft.Xna.Framework.Vector2(posx, posy), texture);
+                case "cat":
+                    return new entities.Entities.Cat(new Microsoft.Xna.Framework.Vector2(posx, posy), texture);
+                case "mouse":
+                    return new entities.Entities.Mouse(new Microsoft.Xna.Framework.Vector2(posx, posy), texture);
 
             }
 

@@ -64,8 +64,11 @@ namespace ggj14.entities.Entities
 
             if (this.isActivePlayer)
             {
-                if(controls.up)
-                    this.velocity.Y -= 30.0f;
+                if (controls.up)
+                {
+                    //if(this.velocity.Y == gravity)
+                        this.velocity.Y -= 5.0f;
+                }
                 /*if(controls.down)
                     this.velocity.Y += 0.25f;*/
                 if (controls.left)
@@ -122,9 +125,9 @@ namespace ggj14.entities.Entities
                     }
                 }
             }
-            if (this.position.Y > 336)
+            if (this.position.Y > 400 - this.texture.Height)
             {
-                this.position.Y = 336;
+                this.position.Y = 400 - this.texture.Height;
                 this.velocity.Y = 0;
 
             }

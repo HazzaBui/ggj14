@@ -125,9 +125,9 @@ namespace ggj14.entities.Entities
                 }
             }
 
-            if (this.position.Y > (336 - (this.texture.Height * (scale - 1))))
+            if (this.position.Y > (400 - (this.texture.Height * scale)))
             {
-                this.position.Y = (336 - (this.texture.Height * (scale - 1)));
+                this.position.Y = (400 - (this.texture.Height * scale));
                 this.velocity.Y = 0;
 
             }
