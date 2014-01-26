@@ -7,37 +7,37 @@
     <backgroundtexture>Content\textures\BedroomBGLayer1</backgroundtexture>
     <gameobject>
       <type>nutpacket</type>
-      <positionx>10</positionx>
-      <positiony>100</positiony>
+      <positionx>600</positionx>
+      <positiony>370</positiony>
       <scale>1</scale>
     </gameobject>
     <gameobject>
       <type>nut</type>
-      <positionx>10</positionx>
-      <positiony>50</positiony>
-      <scale>1</scale>
-    </gameobject>
-    <gameobject>
-      <type>door</type>
-      <positionx>100</positionx>
-      <positiony>100</positiony>
+      <positionx>700</positionx>
+      <positiony>370</positiony>
       <scale>1</scale>
     </gameobject>
     <entity>
       <type>boy</type>
       <positionx>50</positionx>
-      <positiony>20</positiony>
+      <positiony>350</positiony>
+      <scale>1</scale>
+    </entity>
+    <entity>
+      <type>spider</type>
+      <positionx>150</positionx>
+      <positiony>340</positiony>
       <scale>1</scale>
     </entity>
     <entity>
       <type>bird</type>
-      <positionx>100</positionx>
-      <positiony>200</positiony>
+      <positionx>600</positionx>
+      <positiony>350</positiony>
       <scale>1</scale>
     </entity>
     <chapterwarp>
       <warpposx>10</warpposx>
-      <warpposy>300</warpposy>
+      <warpposy>150</warpposy>
       <chapterto>chapter2</chapterto>
     </chapterwarp>
   </chapter1>
@@ -47,42 +47,36 @@
     <backgroundtexture>Content\textures\HallwayBGLayer0</backgroundtexture>
     <backgroundtexture>Content\textures\HallwayBGLayer1</backgroundtexture>
     <gameobject>
-      <type>door</type>
-      <positionx>100</positionx>
-      <positiony>100</positiony>
-      <scale>1</scale>
-    </gameobject>
-    <gameobject>
       <type>ball</type>
       <positionx>10</positionx>
-      <positiony>50</positiony>
+      <positiony>370</positiony>
       <scale>1</scale>
     </gameobject>
     <entity>
       <type>boy</type>
       <positionx>50</positionx>
-      <positiony>20</positiony>
+      <positiony>370</positiony>
       <scale>1</scale>
     </entity>
     <entity>
       <type>mouse</type>
       <positionx>100</positionx>
-      <positiony>200</positiony>
+      <positiony>370</positiony>
       <scale>1</scale>
     </entity>
     <chapterwarp>
       <warpposx>10</warpposx>
-      <warpposy>350</warpposy>
+      <warpposy>340</warpposy>
       <chapterto>chapter3</chapterto>
     </chapterwarp>
     <chapterwarp>
-      <warpposx>300</warpposx>
-      <warpposy>350</warpposy>
+      <warpposx>430</warpposx>
+      <warpposy>340</warpposy>
       <chapterto>chapter1</chapterto>
     </chapterwarp>
     <chapterwarp>
-      <warpposx>400</warpposx>
-      <warpposy>350</warpposy>
+      <warpposx>700</warpposx>
+      <warpposy>340</warpposy>
       <chapterto>chapter4</chapterto>
     </chapterwarp>
   </chapter2>
@@ -93,20 +87,20 @@
       <backgroundtexture>Content\textures\MouseholeCollision</backgroundtexture>
       <gameobject>
         <type>mousetrap</type>
-        <positionx>0</positionx>
-        <positiony>100</positiony>
+        <positionx>350</positionx>
+        <positiony>340</positiony>
         <scale>1</scale>
       </gameobject>
       <gameobject>
         <type>mousetrapused</type>
-        <positionx>10</positionx>
-        <positiony>100</positiony>
+        <positionx>250</positionx>
+        <positiony>340</positiony>
         <scale>1</scale>
       </gameobject>
       <entity>
         <type>mouse</type>
         <positionx>10</positionx>
-        <positiony>20</positiony>
+        <positiony>340</positiony>
         <scale>1</scale>
       </entity>
       <entity>
@@ -117,12 +111,12 @@
       </entity>
       <chapterwarp>
         <warpposx>10</warpposx>
-        <warpposy>300</warpposy>
+        <warpposy>340</warpposy>
         <chapterto>chapter2</chapterto>
       </chapterwarp>
     <chapterwarp>
-      <warpposx>30</warpposx>
-      <warpposy>300</warpposy>
+      <warpposx>600</warpposx>
+      <warpposy>340</warpposy>
       <chapterto>chapter4</chapterto>
     </chapterwarp>
   </chapter3>
@@ -134,34 +128,34 @@
       <entity>
         <type>mouse</type>
         <positionx>10</positionx>
-        <positiony>20</positiony>
+        <positiony>340</positiony>
         <scale>1</scale>
       </entity>
       <entity>
         <type>cat</type>
         <positionx>400</positionx>
-        <positiony>200</positiony>
+        <positiony>340</positiony>
         <scale>1</scale>
       </entity>
       <entity>
         <type>boy</type>
         <positionx>500</positionx>
-        <positiony>200</positiony>
+        <positiony>340</positiony>
         <scale>1</scale>
       </entity>
       <chapterwarp>
-        <warpposx>10</warpposx>
-        <warpposy>300</warpposy>
+        <warpposx>100</warpposx>
+        <warpposy>340</warpposy>
         <chapterto>chapter2</chapterto>
       </chapterwarp>
     <chapterwarp>
-      <warpposx>30</warpposx>
-      <warpposy>300</warpposy>
+      <warpposx>300</warpposx>
+      <warpposy>340</warpposy>
       <chapterto>chapter5</chapterto>
     </chapterwarp>
       <chapterwarp>
-        <warpposx>20</warpposx>
-        <warpposy>200</warpposy>
+        <warpposx>500</warpposx>
+        <warpposy>340</warpposy>
         <chapterto>chapter3</chapterto>
       </chapterwarp>
   </chapter4>

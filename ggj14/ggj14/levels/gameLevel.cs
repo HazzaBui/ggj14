@@ -191,7 +191,7 @@ namespace ggj14.levels
                                     }
                                     reader.Read();
                                 }
-                                doors.Add(new entities.door("Content\\textures\\Door", new Vector2(posx, posy), "door", next));
+                                doors.Add(new entities.door("Content\\textures\\HouseDoorMid", new Vector2(posx, posy), "door", next));
                                 //exitWaypoints.Add(new helpers.chapterWaypoint(posx, posy, chapter));
                             }
                             break;

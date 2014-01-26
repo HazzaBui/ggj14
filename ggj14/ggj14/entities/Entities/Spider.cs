@@ -248,7 +248,7 @@ namespace ggj14.entities.Entities
             this.audioString = inAudioString;
             this.position = inPos;
             this.facingLeft = false;
-            this.isActivePlayer = true;
+            this.isActivePlayer = false;
             int frameWidth = 32;
             int frameHeight = 32;
             frameCount = 0;
@@ -259,7 +259,7 @@ namespace ggj14.entities.Entities
 
             viewableEntities = new List<string>();
             viewableEntities.Add("Cat");
-            viewableEntities.Add("Boy");
+            viewableEntities.Add("Bird");
             viewableEntities.Add("Spider");
 
             textRect = new Rectangle(0, 0, frameWidth, frameHeight);

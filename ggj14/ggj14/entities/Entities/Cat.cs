@@ -261,7 +261,6 @@ namespace ggj14.entities.Entities
 
             viewableEntities = new List<string>();
             viewableEntities.Add("Mouse");
-            viewableEntities.Add("Spider");
             viewableEntities.Add("Boy");
             viewableEntities.Add("Cat");
             viewableEntities.Add("Bird");

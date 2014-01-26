@@ -220,7 +220,7 @@ namespace ggj14.entities.Entities
                 newText.SetData<Color>(oldColArray);
 
                 if (!facingLeft)
-                    spriteBatch.Draw(newText, new Vector2(position.X - texture.Width / (4 * numOfFrames), position.Y - texture.Height / 4), textRect, Color.Yellow, 0.0f, Vector2.Zero, 1.5f, SpriteEffects.None, 0.8f);
+                    spriteBatch.Draw(newText, new Vector2(position.X - texture.Width / (4 * numOfFrames), position.Y - texture.Height / 4), textRect, Color.Yellow, 0.0f, Vector2.Zero, 1.5f, SpriteEffects.FlipHorizontally, 0.8f);
                 else
                     spriteBatch.Draw(newText, new Vector2(position.X - texture.Width / (4 * numOfFrames), position.Y - texture.Height / 4), textRect, Color.Yellow, 0.0f, Vector2.Zero, 1.5f, SpriteEffects.None, 0.8f);
             }
@@ -263,7 +263,6 @@ namespace ggj14.entities.Entities
             viewableEntities.Add("Moth");
             viewableEntities.Add("Spider");
             viewableEntities.Add("Cat");
-            viewableEntities.Add("Bird");
             viewableEntities.Add("Boy");
 
             textRect = new Rectangle(0, 0, frameWidth, frameHeight);

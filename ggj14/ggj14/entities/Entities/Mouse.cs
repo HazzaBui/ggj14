@@ -81,10 +81,10 @@ namespace ggj14.entities.Entities
 
             if (this.isActivePlayer)
             {
-                /*if(controls.up)
-                    this.velocity.Y -= 0.25f;
-                if(controls.down)
-                    this.velocity.Y += 0.25f;*/
+                if(controls.up)
+                    this.velocity.Y -= 9.0f;
+                //if(controls.down)
+                  //  this.velocity.Y += 0.25f;*/
                 if (controls.left)
                 {
                     if (!this.facingLeft)
@@ -261,7 +261,6 @@ namespace ggj14.entities.Entities
             classType = "Mouse";
             viewableEntities = new List<string>();
             viewableEntities.Add("Boy");
-            viewableEntities.Add("Cat");
             viewableEntities.Add("Mouse");
 
             textRect = new Rectangle(0, 0, frameWidth, frameHeight);
