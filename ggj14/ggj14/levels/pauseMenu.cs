@@ -35,11 +35,11 @@ namespace ggj14.levels
             returnObj = new ggj14.helpers.levelReturn();
             menuTopLeftPos = new Vector2();
 
-            this.intialise(null, null);
+            this.intialise(null, null, null);
             this.loadContent();
         }
 
-        public override void intialise(string levelXml, string chapter)
+        public override void intialise(string levelXml, string chapter, string levelName)
         {
             menuStrings[0] = "Resume";
             menuStrings[1] = "Quit";

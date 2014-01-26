@@ -272,7 +272,7 @@ namespace ggj14
             else if (levelState.nextLevel != "" && levelState.nextLevel != null)
             {
                 levelStack.Push(new levels.gameLevel(spriteBatch, contentManager));
-                levelStack.Peek().intialise("Content\\xmlContent\\" + levelState.nextLevel + ".xml", levelState.nextChapter);
+                levelStack.Peek().intialise("Content\\xmlContent\\" + levelState.nextLevel + ".xml", levelState.nextChapter, levelState.nextLevel);
                 levelStack.Peek().loadContent();
                 levelActive = false;
                 levelFadeOut = true;

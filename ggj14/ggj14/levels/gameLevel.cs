@@ -20,6 +20,7 @@ namespace ggj14.levels
         List<Texture2D> backgroundTextures;
         List<string> backgroundTextureStrings;
         List<helpers.chapterWaypoint> exitWaypoints;
+        string chapterName, levelName;
 
         public gameLevel(SpriteBatch spriteBatch, ContentManager contentManager)
         {
@@ -35,9 +36,11 @@ namespace ggj14.levels
 
         }
 
-        public override void intialise(string levelXml, string chapter)
+        public override void intialise(string levelXml, string chapter, string level)
         {
             this.loadLevelFromXML(levelXml, chapter);
+            chapterName = chapter;
+            levelName = level;
         }
 
         public override void loadContent()
@@ -55,6 +58,18 @@ namespace ggj14.levels
                 Texture2D tex = cm.Load<Texture2D>(s);
                 backgroundTextures.Add(tex);
             }
+
+            int load = helpers.levelPersistence.getChapterIndex(levelName + chapterName);
+            if (load >= 0)
+            {
+                entities = helpers.levelPersistence.entityLists.ElementAt(load);
+                gameObjects = helpers.levelPersistence.gameObjectLists.ElementAt(load);
+            }
+            else
+            {
+                helpers.levelPersistence.addLists(entities, gameObjects, levelName + chapterName);
+            }
+
         }
 
         public override void unloadContent()

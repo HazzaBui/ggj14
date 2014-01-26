@@ -35,10 +35,10 @@ namespace ggj14.levels
             loadContent();
             menuTopLeftPos = new Vector2();
 
-            this.intialise("", "");
+            this.intialise("", "", "");
         }
 
-        public override void intialise(string levelXml, string chapter)
+        public override void intialise(string levelXml, string chapter, string level)
         {
             menuStrings[0] = "Level 1";
             menuStrings[1] = "Level 2";
