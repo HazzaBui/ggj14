@@ -21,6 +21,7 @@ namespace ggj14.helpers
         public characters character;
         public string previousLevel;
         public bool exitLevel;
+        public bool transitionBetweenLevels;
     }
 
     public struct playerControl

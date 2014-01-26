@@ -10,7 +10,7 @@ namespace ggj14.entities.Entities
 {
     public class boy : Entity
     {
-        public override void Update(Entity[] entityList, gameObject[] objectList, int entPosition, playerControl controls)
+        public override void Update(Entity[] entityList, gameObject[] objectList, door[] doorList, int entPosition, playerControl controls)
         {
             Entity[] collidingEntities = new Entity[entityList.Length];
             int cEC = 0; //Colliding Entity Count
@@ -61,6 +61,26 @@ namespace ggj14.entities.Entities
                 }
             }
 
+            for (int i = 0; i < doorList.Length; i++)
+            {
+                Color[] entity1TextureData = new Color[this.texture.Width / numOfFrames * this.texture.Height];
+                this.texture.GetData(0, new Rectangle(0, 0, this.texture.Width / numOfFrames, this.texture.Height), entity1TextureData, 0, entity1TextureData.Length);
+                Color[] entity2TextureData = new Color[doorList[i].getTexture().Width * doorList[i].getTexture().Height];
+                doorList[i].getTexture().GetData(entity2TextureData);
+                Vector2 size1, size2;
+                size1 = new Vector2(this.texture.Width / numOfFrames, this.texture.Height);
+                size2 = new Vector2(doorList[i].getTexture().Width, doorList[i].getTexture().Height);
+                bool colliding = checkCollision(this.position, doorList[i].getPosition(), size1, size2, entity1TextureData, entity2TextureData);
+                if (colliding)
+                {
+                    doorList[i].setIsGlowing(true);
+                }
+                else
+                {
+                    doorList[i].setIsGlowing(false);
+                }
+            }
+
             if (this.isActivePlayer)
             {
                 if(controls.up)
@@ -92,6 +112,14 @@ namespace ggj14.entities.Entities
                 }
                 if (controls.use)
                 {
+                    foreach (door d in doorList)
+                    {
+                        if (d.getIsGlowing())
+                        {
+                            d.setHasBeenUsed(true);
+                            break;
+                        }
+                    }
                     foreach (Entity cEnt in collidingEntities)
                     {
                         if (cEnt != null)
@@ -160,8 +188,8 @@ namespace ggj14.entities.Entities
             this.velocity *= 0.9f;
             if (audioTrackInstance.State != Microsoft.Xna.Framework.Audio.SoundState.Playing && this.isActivePlayer)
                 audioTrackInstance.Play();
-            else
-                audioTrackInstance.Pause();
+            if (!this.isActivePlayer)
+                this.audioTrackInstance.Pause();
         }
 
         public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, GraphicsDevice device)
@@ -188,10 +216,15 @@ namespace ggj14.entities.Entities
                     spriteBatch.Draw(newText, new Vector2(position.X - texture.Width / (4 * numOfFrames), position.Y - texture.Height / 4), textRect, Color.Yellow, 0.0f, Vector2.Zero, 1.5f, SpriteEffects.None, 0.8f);
             }
 
+            float depth = 0.5f;
+            if (isActivePlayer)
+            {
+                depth = 0.0f;
+            }
             if (!facingLeft)
-                spriteBatch.Draw(texture, this.position, textRect, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, 0);
+                spriteBatch.Draw(texture, this.position, textRect, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, depth);
             else
-                spriteBatch.Draw(texture, this.position, textRect, Color.White, 0, Vector2.Zero, scale, SpriteEffects.FlipHorizontally, 0);
+                spriteBatch.Draw(texture, this.position, textRect, Color.White, 0, Vector2.Zero, scale, SpriteEffects.FlipHorizontally, depth);
         }
 
         public boy(Vector2 inPos, string inTexString, string inAudioString)

@@ -107,7 +107,7 @@ namespace ggj14.entities
             audioTrackInstance = audioTrack.CreateInstance();
         }
 
-        public virtual void Update(Entity[] entityList, gameObject[] objectList, int listPosition, playerControl controls)
+        public virtual void Update(Entity[] entityList, gameObject[] objectList, door[] doorList, int listPosition, playerControl controls)
         {
             
         }

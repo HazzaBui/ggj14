@@ -20,6 +20,7 @@ namespace ggj14.levels
         List<Texture2D> backgroundTextures;
         List<string> backgroundTextureStrings;
         List<helpers.chapterWaypoint> exitWaypoints;
+        List<entities.door> doors;
         string chapterName, levelName;
 
         public gameLevel(SpriteBatch spriteBatch, ContentManager contentManager)
@@ -33,6 +34,7 @@ namespace ggj14.levels
             backgroundTextureStrings = new List<string>();
             returnObj = new helpers.levelReturn();
             exitWaypoints = new List<helpers.chapterWaypoint>();
+            doors = new List<entities.door>();
 
         }
 
@@ -57,6 +59,10 @@ namespace ggj14.levels
             {
                 Texture2D tex = cm.Load<Texture2D>(s);
                 backgroundTextures.Add(tex);
+            }
+            foreach (ggj14.entities.door d in doors)
+            {
+                d.LoadContent(cm);
             }
 
             int load = helpers.levelPersistence.getChapterIndex(levelName + chapterName);
@@ -93,7 +99,18 @@ namespace ggj14.levels
 
             for (int i = 0; i < entities.Count; i++)
             {
-                entities.ElementAt(i).Update(entities.ToArray(), gameObjects.ToArray(), i, controller);
+                entities.ElementAt(i).Update(entities.ToArray(), gameObjects.ToArray(), doors.ToArray(), i, controller);
+            }
+
+            foreach (ggj14.entities.door d in doors)
+            {
+                if (d.getHasBeenUsed())
+                {
+                    returnObj.nextChapter = d.getChapterTo();
+                    //returnObj.exitLevel = true;
+                    returnObj.nextLevel = levelName;
+                    returnObj.transitionBetweenLevels = true;
+                }
             }
 
             return returnObj;
@@ -107,6 +124,10 @@ namespace ggj14.levels
                 sb.Draw(tex, new Rectangle(0, 0, graphics.GraphicsDevice.Viewport.Width, graphics.GraphicsDevice.Viewport.Height), Color.White);
             }
 
+            foreach (ggj14.entities.door door in doors)
+            {
+                door.Draw(sb, graphics.GraphicsDevice);
+            }
 
             foreach (ggj14.entities.gameObject g in gameObjects)
             {
@@ -169,7 +190,8 @@ namespace ggj14.levels
                                     }
                                     reader.Read();
                                 }
-                                exitWaypoints.Add(new helpers.chapterWaypoint(posx, posy, chapter));
+                                doors.Add(new entities.door("Content\\textures\\Door", new Vector2(posx, posy), "door", next));
+                                //exitWaypoints.Add(new helpers.chapterWaypoint(posx, posy, chapter));
                             }
                             break;
                             case "gameobject":
