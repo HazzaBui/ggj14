@@ -72,7 +72,8 @@ namespace ggj14.entities.Entities
                 if (controls.up)
                 {
                     //if(this.velocity.Y == gravity)
-                        this.velocity.Y -= 5.0f;
+                    this.velocity.Y -= 5.0f;
+                    this.position.Y -= 1.1f;
                 }
                 /*if(controls.down)
                     this.velocity.Y += 0.25f;*/
