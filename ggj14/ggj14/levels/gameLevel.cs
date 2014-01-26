@@ -85,6 +85,12 @@ namespace ggj14.levels
             {
                 gameObjects.ElementAt(i).Update();
             }
+
+            for (int i = 0; i < entities.Count; i++)
+            {
+                entities.ElementAt(i).setCurrentlyColliding(false);
+            }
+
             for (int i = 0; i < entities.Count; i++)
             {
                 entities.ElementAt(i).Update(entities.ToArray(), gameObjects.ToArray(), i, controller);

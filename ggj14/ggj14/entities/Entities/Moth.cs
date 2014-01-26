@@ -23,26 +23,20 @@ namespace ggj14.entities.Entities
             {
                 Color[] entity1TextureData = new Color[this.texture.Width / numOfFrames * this.texture.Height];
                 this.texture.GetData(0, new Rectangle(0, 0, this.texture.Width / numOfFrames, this.texture.Height), entity1TextureData, 0, entity1TextureData.Length);
-                Color[] entity2TextureData = new Color[entityList[i].getTexture().Width * entityList[i].getTexture().Height];
-                entityList[i].getTexture().GetData(entity2TextureData);
+                Color[] entity2TextureData = new Color[entityList[i].getTexture().Width / entityList[i].getFrameCount() * entityList[i].getTexture().Height];
+                entityList[i].getTexture().GetData(0, new Rectangle(0, 0, entityList[i].getTexture().Width / entityList[i].getFrameCount(), entityList[i].getTexture().Height), entity2TextureData, 0, entity2TextureData.Length);
                 Vector2 size1, size2;
                 size1 = new Vector2(this.texture.Width / numOfFrames, this.texture.Height);
                 size2 = new Vector2((float)(entityList[i].getTexture().Width / entityList[i].getFrameCount()), entityList[i].getTexture().Height);
                 if (i != entPosition)
                 {
                     bool colliding = checkCollision(this.position, entityList[i].getPosition(), size1, size2, entity1TextureData, entity2TextureData);
-                    if (colliding)
+                    if (colliding && this.isActivePlayer)
                     {
                         collidingEntities[cEC] = entityList[i];
                         entityList[i].setCurrentlyColliding(true);
                     }
-                    else
-                    {
-                        entityList[i].setCurrentlyColliding(false);
-                    }
                 }
-                else
-                    entityList[i].setCurrentlyColliding(false);
             }
 
             for (int i = 0; i < objectList.Length; i++)
@@ -81,7 +75,7 @@ namespace ggj14.entities.Entities
                         frameCount = 0;
                         //scale += 0.05f;
                     }
-                    frameCount++;
+                    //frameCount++;
                     this.velocity.X -= speed;
                 }
                 if (controls.right)
@@ -92,16 +86,32 @@ namespace ggj14.entities.Entities
                         frameCount = 0;
                         //scale += 0.05f;
                     }
-                    frameCount++;
+                    //frameCount++;
                     this.velocity.X += speed;
 
                 }
                 if (controls.use)
                 {
-                    frameCount++;
+                    foreach (Entity cEnt in collidingEntities)
+                    {
+                        if (cEnt != null)
+                        {
+                            if (cEnt.getCurrentlyColliding() == true)
+                            {
+                                if (!helpers.levelPersistence.ChangedEntityThisFrame)
+                                {
+                                    cEnt.setIsActive(true);
+                                    this.setIsActive(false);
+                                    helpers.levelPersistence.ChangedEntityThisFrame = true;
+                                }
+                                break;
+                            }
+                        }
+                    }
                 }
             }
-            if (frameCount >= (10 * numOfFrames) || (!controls.right && !controls.left))
+            frameCount++;
+            if (frameCount >= (10 * numOfFrames))
             {
                 frameCount = 0;
             }
@@ -128,9 +138,9 @@ namespace ggj14.entities.Entities
                     }
                 }
             }
-            if (this.position.Y > (336 - (this.texture.Height * (scale - 1))))
+            if (this.position.Y > (400 - (this.texture.Height * (scale))))
             {
-                this.position.Y = (336 - (this.texture.Height * (scale - 1)));
+                this.position.Y = (400 - (this.texture.Height * (scale)));
                 this.velocity.Y = 0;
 
             }
@@ -146,7 +156,7 @@ namespace ggj14.entities.Entities
             }
             this.position += this.velocity;
             this.velocity *= 0.9f;
-            //base.Update(entityList, objectList, entPosition, controls);
+            base.Update(entityList, objectList, entPosition, controls);
         }
 
         public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, GraphicsDevice device)
@@ -185,11 +195,11 @@ namespace ggj14.entities.Entities
             this.position = inPos;
             //this.centre = new Vector2((this.position.X + texture.Width) / 2, (this.position.Y + texture.Height) / 2);
             this.facingLeft = false;
-            this.isActivePlayer = true;
+            this.isActivePlayer = false;
             int frameWidth = 64;
             int frameHeight = 32;
             frameCount = 0;
-            numOfFrames = 4;
+            numOfFrames = 2;
             speed = 0.25f;
             gravity = 1.0f;
             classType = "Moth";

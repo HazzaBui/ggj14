@@ -14,4 +14,32 @@
     <stepsound></stepsound>
     <backgroundmusic></backgroundmusic>
   </entity>
+  <entity>
+    <entityname>moth</entityname>
+    <texture>Content\textures\Moth</texture>
+    <interactivesound>Content\sounds\</interactivesound>
+    <stepsound></stepsound>
+    <backgroundmusic></backgroundmusic>
+  </entity>
+  <entity>
+    <entityname>cat</entityname>
+    <texture>Content\textures\Cat</texture>
+    <interactivesound>Content\sounds\</interactivesound>
+    <stepsound></stepsound>
+    <backgroundmusic></backgroundmusic>
+  </entity>
+  <entity>
+    <entityname>bird</entityname>
+    <texture>Content\textures\Bird</texture>
+    <interactivesound>Content\sounds\</interactivesound>
+    <stepsound></stepsound>
+    <backgroundmusic></backgroundmusic>
+  </entity>
+  <entity>
+    <entityname>mouse</entityname>
+    <texture>Content\textures\Mouse</texture>
+    <interactivesound>Content\sounds\</interactivesound>
+    <stepsound></stepsound>
+    <backgroundmusic></backgroundmusic>
+  </entity>
 </entities>

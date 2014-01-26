@@ -5,31 +5,61 @@
     <backgroundtexture>Content\textures\BedroomBGLayer1</backgroundtexture>
     <gameobject>
       <type>mousetrap</type>
-      <positionx>100</positionx>
+      <positionx>0</positionx>
       <positiony>100</positiony>
       <scale>1</scale>
     </gameobject>
     <gameobject>
       <type>key</type>
-      <positionx>200</positionx>
+      <positionx>0</positionx>
       <positiony>200</positiony>
       <scale>1</scale>
     </gameobject>
     <gameobject>
       <type>nut</type>
-      <positionx>300</positionx>
-      <positiony>350</positiony>
+      <positionx>0</positionx>
+      <positiony>50</positiony>
       <scale>1</scale>
     </gameobject>
     <gameobject>
       <type>ball</type>
-      <positionx>100</positionx>
+      <positionx>0</positionx>
       <positiony>200</positiony>
       <scale>1</scale>
     </gameobject>
     <entity>
       <type>spider</type>
       <positionx>10</positionx>
+      <positiony>20</positiony>
+      <scale>1</scale>
+    </entity>
+    <entity>
+      <type>moth</type>
+      <positionx>400</positionx>
+      <positiony>200</positiony>
+      <scale>1</scale>
+    </entity>
+    <entity>
+      <type>boy</type>
+      <positionx>50</positionx>
+      <positiony>20</positiony>
+      <scale>1</scale>
+    </entity>
+    <entity>
+      <type>cat</type>
+      <positionx>100</positionx>
+      <positiony>20</positiony>
+      <scale>1</scale>
+    </entity>
+    <entity>
+      <type>mouse</type>
+      <positionx>150</positionx>
+      <positiony>20</positiony>
+      <scale>1</scale>
+    </entity>
+    <entity>
+      <type>bird</type>
+      <positionx>200</positionx>
       <positiony>20</positiony>
       <scale>1</scale>
     </entity>

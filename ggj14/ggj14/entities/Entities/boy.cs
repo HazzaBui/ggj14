@@ -19,34 +19,24 @@ namespace ggj14.entities.Entities
             int cOC = 0;
 
             this.velocity.Y += gravity;
-            for(int i = 0; i < entityList.Length; i++) 
+            for (int i = 0; i < entityList.Length; i++)
             {
                 Color[] entity1TextureData = new Color[this.texture.Width / numOfFrames * this.texture.Height];
                 this.texture.GetData(0, new Rectangle(0, 0, this.texture.Width / numOfFrames, this.texture.Height), entity1TextureData, 0, entity1TextureData.Length);
-                Color[] entity2TextureData = new Color[entityList[i].getTexture().Width * entityList[i].getTexture().Height];
-                entityList[i].getTexture().GetData(entity2TextureData);
+                Color[] entity2TextureData = new Color[entityList[i].getTexture().Width / entityList[i].getFrameCount() * entityList[i].getTexture().Height];
+                entityList[i].getTexture().GetData(0, new Rectangle(0, 0, entityList[i].getTexture().Width / entityList[i].getFrameCount(), entityList[i].getTexture().Height), entity2TextureData, 0, entity2TextureData.Length);
                 Vector2 size1, size2;
                 size1 = new Vector2(this.texture.Width / numOfFrames, this.texture.Height);
                 size2 = new Vector2((float)(entityList[i].getTexture().Width / entityList[i].getFrameCount()), entityList[i].getTexture().Height);
                 if (i != entPosition)
                 {
                     bool colliding = checkCollision(this.position, entityList[i].getPosition(), size1, size2, entity1TextureData, entity2TextureData);
-                    if (colliding)
+                    if (colliding && this.isActivePlayer)
                     {
-                        entityList[i].setCurrentlyColliding(true);
                         collidingEntities[cEC] = entityList[i];
-                        if (isActivePlayer)
-                        {
-                            int q = 0;
-                        }
-                    }
-                    else
-                    {
-                        entityList[i].setCurrentlyColliding(false);
+                        entityList[i].setCurrentlyColliding(true);
                     }
                 }
-                //else
-                  //  entityList[i].setCurrentlyColliding(false); 
             }
 
             for (int i = 0; i < objectList.Length; i++)
@@ -108,9 +98,12 @@ namespace ggj14.entities.Entities
                         {
                             if (cEnt.getCurrentlyColliding() == true)
                             {
-                                cEnt.setIsActive(true);
-                                this.setIsActive(false);
-                                controls.use = false;
+                                if (!helpers.levelPersistence.ChangedEntityThisFrame)
+                                {
+                                    cEnt.setIsActive(true);
+                                    this.setIsActive(false);
+                                    helpers.levelPersistence.ChangedEntityThisFrame = true;
+                                }
                                 break;
                             }
                         }

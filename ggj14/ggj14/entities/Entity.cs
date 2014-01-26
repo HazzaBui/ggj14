@@ -32,7 +32,7 @@ namespace ggj14.entities
             return classType;
         }
 
-        public double getFrameCount()
+        public int getFrameCount()
         {
             return numOfFrames;
         }
