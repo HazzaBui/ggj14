@@ -1,0 +1,18 @@
+The Great Soul-Swap Adventure Simulator 2k14 Ultimate Edition - Indoors Expansion Pack 2.0 (GSSAS to its friends) is an adventure game that illustrates how the way we see the world changes based on our perspective.
+
+INTRODUCTION
+
+WALKTHROUGH
+
+CONTROLS
+MOVEMENT
+Different beings move around the world in different ways; a person can only walk across the floor, but a spider can crawl up the walls. A mouse can scurry through tiny holes in the skirting board and a bird can fly through windows. You can move around the world using the W, A, S and D keys, but remember; your puppet may not be as nimble as others and you may find you need something more nimble to progress.
+
+INTERACTION
+The E key is used to interact with the world. It has two context-sensitive functions; using objects and possessing living beings.
+
+POSSESSING LIVING BEINGS
+Each being sees some other beings as important, but completely ignores others. A person would largely ignore a mouse or spider but would notice something larger, like a cat or a bird. A cat, meanwhile, would certainly notice the mouse; that's lunch. You can possess beings your puppet has noticed by pressing the E key while standing next to them.
+
+USING OBJECTS
+In a similar manner to objects, different beings similarly notice different things about the world around them. Where a person sees a window, a bird sees a door to the open world. Where a cat sees hours of fun, a human only sees a lost ball of twine. Objects that appear interesting to your puppet can be interacted with by the use of the E key.

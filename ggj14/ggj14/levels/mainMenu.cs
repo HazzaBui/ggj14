@@ -22,6 +22,7 @@ namespace ggj14.levels
         int menuTimer;
         bool isGrowing;
         int enterTimer;
+        Texture2D background0, background1;
 
         public mainMenu(SpriteBatch spriteBatch, ContentManager contentManager)
         {
@@ -29,7 +30,7 @@ namespace ggj14.levels
             cm = contentManager;
             returnObj = new ggj14.helpers.levelReturn();
             returnObj.exitLevel = false;
-            menuStrings = new String[3];
+            menuStrings = new String[4];
             menuSize = new float[menuStrings.Length];
 
             loadContent();
@@ -41,14 +42,15 @@ namespace ggj14.levels
         public override void intialise(string levelXml, string chapter, string level)
         {
             menuStrings[0] = "Level 1";
-            menuStrings[1] = "Level 2";
-            menuStrings[2] = "Exit";
+            menuStrings[1] = "Help";
+            menuStrings[2] = "Credits";
+            menuStrings[3] = "Exit";
             for (int i = 0; i < menuSize.Length; i++)
                 menuSize[i] = 0.0f;
             //menuSize = 1.2f;
             menuSelection = 0;
-            menuTopLeftPos.X = 20.0f;
-            menuTopLeftPos.Y = 20.0f;
+            menuTopLeftPos.X = 250.0f;
+            menuTopLeftPos.Y = 100.0f;
             menuTimer = 0;
             isGrowing = true;
 
@@ -58,6 +60,8 @@ namespace ggj14.levels
         public override void loadContent()
         {
             menuFont = cm.Load<SpriteFont>("Content\\fonts\\mainMenu");
+            background1 = cm.Load<Texture2D>("Content\\textures\\BedroomBGLayer1");
+            background0 = cm.Load<Texture2D>("Content\\textures\\BedroomBGLayer0");
         }
 
         public override void unloadContent()
@@ -139,13 +143,20 @@ namespace ggj14.levels
                     {
                         returnObj.exitLevel = true;
                     }
-                    else
+                    else if(menuSelection == 0)
                     {
                         returnObj.nextLevel = "level" + (menuSelection + 1);
                         returnObj.nextChapter = "chapter1";
                         //Add new level to stack
                     }
-
+                    else if (menuSelection == 1)
+                    {
+                        returnObj.nextLevel = "help";
+                    }
+                    else if (menuSelection == 2)
+                    {
+                        returnObj.nextLevel = "credits";
+                    }
                 }
             }
             
@@ -156,6 +167,9 @@ namespace ggj14.levels
         public override void draw(Microsoft.Xna.Framework.GraphicsDeviceManager graphics, Microsoft.Xna.Framework.GameTime gameTime)
         {
             graphics.GraphicsDevice.Clear(Color.Green);
+
+            sb.Draw(background0, new Rectangle(0, 0, graphics.GraphicsDevice.Viewport.Width, graphics.GraphicsDevice.Viewport.Height), Color.White);
+            sb.Draw(background1, new Rectangle(0, 0, graphics.GraphicsDevice.Viewport.Width, graphics.GraphicsDevice.Viewport.Height), Color.White);
             
             for(int i = 0; i < menuStrings.Length; i++)
             {

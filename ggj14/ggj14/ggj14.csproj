@@ -124,6 +124,7 @@
     <Compile Include="helpers\types.cs" />
     <Compile Include="levels\baseLevel.cs" />
     <Compile Include="levels\gameLevel.cs" />
+    <Compile Include="levels\help.cs" />
     <Compile Include="levels\mainMenu.cs" />
     <Compile Include="levels\pauseMenu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -326,23 +326,16 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="textures\BedroomBGCollision.bmp">
-      <Name>BedroomBGCollision</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="textures\BedroomBGDoor.bmp">
-      <Name>BedroomBGDoor</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
+    <None Include="xmlContent\help.txt">
+      <Name>help</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="textures\HallwayCollision.bmp">
-      <Name>HallwayCollision</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
+    <None Include="xmlContent\credits.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Name>credits</Name>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 

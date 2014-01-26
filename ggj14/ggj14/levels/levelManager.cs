@@ -275,8 +275,16 @@ namespace ggj14
                 {
                     levelStack.Pop();
                 }
-                levelStack.Push(new levels.gameLevel(spriteBatch, contentManager));
-                levelStack.Peek().intialise("Content\\xmlContent\\" + levelState.nextLevel + ".xml", levelState.nextChapter, levelState.nextLevel);
+                if (levelState.nextLevel == "help" || levelState.nextLevel == "credits")
+                {
+                    levelStack.Push(new levels.help(spriteBatch, contentManager));
+                    levelStack.Peek().intialise("", "", "Content\\xmlContent\\" + levelState.nextLevel + ".txt");
+                }
+                else
+                {
+                    levelStack.Push(new levels.gameLevel(spriteBatch, contentManager));
+                    levelStack.Peek().intialise("Content\\xmlContent\\" + levelState.nextLevel + ".xml", levelState.nextChapter, levelState.nextLevel);
+                }
                 levelStack.Peek().loadContent();
                 levelActive = false;
                 levelFadeOut = true;
