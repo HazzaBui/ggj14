@@ -199,7 +199,9 @@ namespace ggj14
                     escapeTimer = 0;
                     if (levelStack.Count == 1)
                     {
-                        Exit();
+                        levelActive = false;
+                        levelState.exitLevel = true;
+                        //Exit();
                     }
                     else
                     {
