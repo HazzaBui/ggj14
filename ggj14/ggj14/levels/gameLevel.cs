@@ -79,6 +79,8 @@ namespace ggj14.levels
 
         public override helpers.levelReturn update(Microsoft.Xna.Framework.GameTime gameTime, helpers.playerControl controller)
         {
+            helpers.levelPersistence.ChangedEntityThisFrame = false;
+
             for (int i = 0; i < gameObjects.Count; i++)
             {
                 gameObjects.ElementAt(i).Update();

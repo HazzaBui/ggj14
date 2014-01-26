@@ -14,7 +14,7 @@ namespace ggj14.helpers
         public static List<List<entities.Entity>> entityLists = new List<List<entities.Entity>>();
         public static List<List<entities.gameObject>> gameObjectLists = new List<List<entities.gameObject>>();
         public static List<string> chapter = new List<string>();
-
+        public static bool ChangedEntityThisFrame;
 
         public static void addLists(List<entities.Entity> e, List<entities.gameObject> go, string chapterName)
         {
